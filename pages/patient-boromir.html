@@ -1,0 +1,77 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <title>Doctor Panic App</title> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <link rel="stylesheet" href="../css/jquery.mobile-1.4.5.css" />
+        <link rel="stylesheet" href="../css/doctor-panic.css" />
+        <link rel="stylesheet" href="../css/font.css" />
+        <link href="../css/mobile-version.css" rel="stylesheet" type="text/css"/>
+
+        <script src="../js/jquery.js"></script>
+        <script src="../js/jquery.mobile-1.4.5.min.js"></script>
+        <script src="../js/gamelevel.js" type="text/javascript"></script>
+
+        <script src="../cordova.js" type="text/javascript"></script>
+        <script src="../js/index.js" type="text/javascript"></script>
+    </head> 
+    <body class="ui-overlay-c">
+        <!-- Page 2 -->
+        <section data-role="page" data-theme="a" id="patient">
+            <header data-role="header">
+                <a href="#" class="redirectHome" data-role="button" data-rel="page" data-direction="reverse" data-icon="arrow-l" data-iconpos="notext" data-theme="a"></a>
+                <h1>Patient
+                    <span id="set_level"></span></h1>
+            </header>
+
+            <article data-role="content" class="content">
+                <div class="picture-character patient-img">
+                    <a href="#" class="patientList" data-prefetch="true" data-ajax="false" data-rel="page" data-position-to="window" data-transition="slidedown">
+                        <img src="../images/character/boromir.png" title="Boromir Stark" alt="Boromir Stark">
+                    </a>
+                </div><!-- End of picture-character -->
+
+                <span class="label name">Boromir Stark</span>
+
+                <div class="label txt clear languagespecificHTML" data-text="intro_line4">
+                    <strong>Boromir</strong> vient d'arriver aux urgences de l'h&ocirc;pital. Il a &eacute;t&eacute; bless&eacute; lors d'une s&eacute;ance d'acupuncture avec ces amis Orcs. C'est &agrave; vous de jouer&nbsp;!
+                </div>
+
+                <a href="#" data-prefetch="true" data-ajax="false" data-rel="page" data-position-to="window" data-transition="slidedown" class="btn warmgrey patientList">
+                    <span class="languagespecificHTML" data-text="intro_line14">Changer de patient</span></a>
+
+                <a href="#" data-transition="slide" class="btn yellow op_boromir">
+                    <span class="languagespecificHTML" data-text="intro_line17">Lancer l'op&eacute;ration !</span></a>
+
+            </article>
+
+            <footer data-role="footer">
+                &nbsp;
+            </footer><!-- End of footer -->
+
+        </section><!-- End of page patient-->
+        <script>
+            $(document).ready(function () {
+                var d_level = GetQueryStringParams("level");
+                $(".op_boromir").click(function () {
+                    window.location.href = "operation-boromir.html?level=" + d_level + "&id=3";
+                });
+
+            });
+
+            function GetQueryStringParams(sParam)
+            {
+                var sPageURL = window.location.search.substring(1);
+                var sURLVariables = sPageURL.split('&');
+                for (var i = 0; i < sURLVariables.length; i++)
+                {
+                    var sParameterName = sURLVariables[i].split('=');
+                    if (sParameterName[0] == sParam)
+                    {
+                        return sParameterName[1];
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>

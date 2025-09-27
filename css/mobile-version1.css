@@ -1,0 +1,1161 @@
+/**********************************/
+
+body, p{ 
+    font-family: 'cafeteriaregular'; 
+    font-size: 1.5em;
+}
+a:focus.btn.green span{ background-color: #8ec549; color: #fff;}
+.label.name{ 
+    font-size: 1.5em; 
+}
+.label.txt{ 
+    font-size: 0.8em;
+    line-height: 1.2em; 
+}
+.btn.warmgrey {
+    margin-bottom: 8px;
+}
+
+#infobulle h2 {
+    font-size: 1.2em;
+}
+#infobulle p {
+    font-size: 1em;
+}
+canvas{ 
+    background: #313131 url(../images/ecg.png); 
+    width: 100%; 
+    height: 180px; 
+    position: relative; 
+    float: left;
+}
+#canvas {
+    width: 100%;
+    height: 30%;
+    position: relative;
+    text-align: center;
+}
+#canvas .heart {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    border: 1px solid red;
+    z-index: 10;
+}
+.content h2 {
+    font-family: inherit;
+    font-weight: bold;
+}
+#canvas img {
+    display: none;
+    width: 100%;
+}
+section#victory {
+    background-color: #07191F; 
+}
+section#defeat {
+    background-color: #103957; 
+}
+.event {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    background-size: 100% auto;
+    padding-top: 80%; 
+    background-repeat: no-repeat; 
+    background-position: center top;
+    font-size: 0.7em;
+    top: 0;
+    left: 0;
+    position: fixed;
+}
+.event .contenair {
+    bottom: 45%;
+}
+.contenair .callof{ 
+    position: absolute; 
+    left: 50%; 
+    margin-left: -48px; 
+    bottom: initial;    
+}
+.overlay { 
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7) url("../images/start.png") no-repeat 50% 50%;
+    top: 0;
+    z-index: 9;
+}
+
+.video-container {
+    position:relative;
+    padding-bottom:56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+}
+.video-container iframe, .video-container object, .video-container embed {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+.info {
+    width: 35%;
+}
+.info .label.gender img {
+    margin: 0;
+}
+#trailer {
+    background-color: #4ab383;
+}
+#credits a {
+    color: #3388cc !important;
+}
+
+#start.ui-body-b{ 
+    background-color: none; 
+    box-shadow: none; 
+    border: 0 none; 
+    background: 0 none;
+}
+.ui-page-theme-a #start.ui-body-inherit{ 
+    background-color: none; 
+    border-color: none; 
+    text-shadow: none;
+}
+#choc-popup {
+    max-width: 100%;
+    width: 100%;
+    left: 0;
+}
+#choc .power-charge {
+    position: fixed;
+    bottom: 0;
+    height: 380px;
+}
+#choc .power-charge a {
+    display: block;
+    position: fixed;
+    bottom: 30%;
+    width: 100%;
+}
+#choc .power-charge span {
+    font-size: 190%;
+}
+#choc .power-charge #charge{
+    width: 100%;
+    margin: 0 auto;
+    z-index: 99;
+    position: fixed;
+    bottom: 195px;
+    text-align: center;
+}
+#choc .power-charge a img {
+    width: 100%;
+}
+#opok .btn.green {
+    margin-bottom: 30px;
+}
+#phone img {
+    width: 100%;
+}
+.pctr-bx                    /*************************************************************** viku **/
+{
+    width: 60%;
+}
+.picture-character.left img
+{
+    min-width: 100%;
+    height: 100% !important;
+    margin-left: 0 !important;
+    width: 100%;
+    position: relative !important;
+    left: 0 !important;
+}
+.pctr-bx img
+{
+    min-width: 100%;
+    height: 192px !important;
+    margin-left: 0 !important;
+    width: 100%;
+    position: relative !important;
+}
+.picture-character.left
+{
+    height: 192px;
+}
+
+@media only screen and (max-width:1242px) /************************************ viku **/
+{
+    .ui-header .ui-title, .ui-footer .ui-title
+    {
+        font-size: 60px;
+        min-height: 16px;
+    }
+    .content-img
+    {
+        margin: 35% 5% 5%;
+    }
+    .goodies
+    {
+        padding: 60px 5px 0;
+        height: 149px;
+        width: 190px;
+    }
+    .goodies, #credits p
+    {
+        font-size: 76px;
+    }
+    .ui-footer .ui-btn.btn-footer, .sp-slide .btn
+    {
+            font-size: 80px;
+    }
+    .sp-slide .btn
+    {
+        width: 97%;
+    }
+    
+    .picture-character.left
+    {
+        height: 565px !important;
+    }
+    .info .label img
+    {
+        height: auto;
+        width: 50px;
+    }
+    .label
+    {
+        font-size: 80px;
+    }
+    .info .label
+    {
+        padding: 50px 3%;
+    }
+    .first-name, .last-name, .label, #choc .power-charge span, .btn
+    {
+        font-size: 80px;
+    }
+    .content h2
+    {
+        font-size: 66px;
+        top: -60px;
+        padding: 25px 35px;
+    }
+    #choc .power-charge #charge
+    {
+        bottom: 20%;
+    }
+    #choc .power-charge span
+    {
+        font-size: 76px;
+    }
+    
+    
+    
+    
+    /************************* patient-alexandre.html */
+    .nw-goodies
+    {
+        padding: 40px 5px 0;
+        height: 110px;
+        width: 150px;
+        font-size: 62px;
+    }
+    .patient-img
+    {
+        height: 400px;
+    }
+    .patient-img img
+    {
+        height: 100%;
+        margin: 0;
+        position: initial;
+    }
+    .label.name
+    {
+        font-size: 3em;
+    }
+    .label.txt
+    {
+        font-size: 2.4em;
+    }
+}
+@media only screen and (max-width:1125px) /************************************ viku **/
+{
+    .content-img
+    {
+        margin: 32% 5% 5%;
+    }
+}
+@media only screen and (max-width:1080px) /************************************ viku **/
+{
+    .content-img
+    {
+        margin: 32% 5% 5%;
+    }
+    .sp-slide .btn
+    {
+        width: 97%;
+    }
+}
+@media only screen and (max-width:980px) /************************************ viku **/
+{
+    .content-img
+    {
+        margin: 8% 5% 5%;
+    }
+    .goodies
+    {
+        padding: 44px 5px 0;
+        height: 115px;
+        width: 150px;
+    }
+    .goodies, #credits p
+    {
+        font-size: 48px;
+    }
+    .first-name, .last-name, .label, #choc .power-charge span, .btn
+    {
+        font-size: 54px;
+    }
+    .patient-img
+    {
+        height: 280px;
+    }
+    .nw-goodies
+    {
+        padding: 30px 5px 0;
+        height: 75px;
+        width: 95px;
+        font-size: 34px;
+    }
+    .label.name
+    {
+        font-size: 2.2em;
+    }
+    .label.txt
+    {
+        font-size: 1.6em;
+    }
+    
+}
+@media only screen and (max-width:900px) /************************************ viku **/
+{
+    .content-img
+    {
+        margin: 14% 5% 5%;
+    }
+    .ui-footer .ui-btn.btn-footer, .sp-slide .btn
+    {
+        font-size: 62px;
+    }
+    .goodies
+    {
+        padding: 40px 5px 0;
+        height: 100px;
+        width: 130px;
+    }
+    .goodies, #credits p
+    {
+        font-size: 40px;
+    }
+}
+@media only screen and (max-width:800px) /************************************ viku **/
+{
+    .content-img
+    {
+        margin: 22% 5% 5%;
+    }
+    .ui-footer .ui-btn.btn-footer, .sp-slide .btn
+    {
+        font-size: 52px;
+    }
+    .sp-slide .btn
+    {
+        width: 96.8%;
+    }
+    .goodies
+    {
+        padding: 44px 5px 0;
+        height: 120px;
+        width: 150px;
+    }
+    .goodies, #credits p
+    {
+        font-size: 66px;
+    }
+    .content h2
+    {
+        font-size: 36px;
+    }
+    .info .label
+    {
+        padding: 28px 3%;
+    }
+    .first-name, .last-name, .label
+    {
+        font-size: 42px;
+    }
+    #choc .power-charge span, .btn
+    {
+        font-size: 42px;
+    }
+    .info .label img
+    {
+        width: 35px;
+    }
+    .picture-character.left
+    {
+        height: 392px !important;
+    }
+    #choc .power-charge #charge
+    {
+        bottom: 24%;
+    }
+    #choc .power-charge span
+    {
+        font-size: 50px;
+    }
+    
+     /************************* patient-alexandre.html */
+     .ui-header .ui-title, .ui-footer .ui-title
+     {
+        font-size: 42px;
+     }
+    .nw-goodies
+    {
+        padding: 30px 5px 0;
+        height: 75px;
+        width: 95px;
+        font-size: 42px;
+    }
+    .patient-img
+    {
+        height: 320px;
+    }
+    .patient-img img
+    {
+        height: 100%;
+        margin: 0;
+        position: initial;
+    }
+    .label.name
+    {
+        font-size: 2em;
+    }
+    .label.txt
+    {
+        font-size: 1.3em;
+    }
+}
+@media(max-width:768px)
+{
+    .content-img
+    {
+            margin: 8% 5% 5%;
+    }
+    
+    .intro, .part
+    {
+        padding: 4% 4% 32px 4%;
+    }
+    
+    .ui-footer .ui-btn.btn-footer, .sp-slide .btn
+    {
+        font-size: 44px;
+    }
+    .ui-header .ui-title, .ui-footer .ui-title
+    {
+        font-size: 28px;
+    }
+    .infirmiere
+    {
+        width: 35%;
+    }
+    #choc .power-charge #charge
+    {
+        bottom: 30%;
+    }
+    .info .label
+    {
+        padding: 5%;
+        height: auto;
+    }
+    .info .label img
+    {
+            width: 30px;
+    }
+    .first-name, .last-name, .label
+    {
+        font-size: 30px;
+    }
+    .picture-character.left
+    {
+        height: 268px !important;
+    }
+    #choc .power-charge span
+    {
+        font-size: 54px;
+    }
+    #choc .power-charge #charge
+    {
+        bottom: 30%;
+    }
+    .btn
+    {
+        font-size: 36px;
+        margin-bottom: 18px;
+    }
+    .goodies, #credits p
+    {
+        font-size: 56px;
+    }
+    .goodies
+    {
+        padding: 30px 5px 0;
+        height: 100px;
+        width: 120px;
+    }
+    /************************* patient-alexandre.html */
+    .nw-goodies
+    {
+        padding: 30px 5px 0;
+        height: 75px;
+        width: 95px;
+        font-size: 40px;
+    }
+    .patient-img
+    {
+        height: 320px;
+    }
+    .patient-img img
+    {
+        height: 100%;
+        margin: 0;
+        position: initial;
+    }
+    .label.name
+    {
+        font-size: 2em;
+    }
+    .label.txt
+    {
+        font-size: 1.5em;
+    }
+}
+@media(max-width:750px) /************************************ viku **/
+{
+    .content-img
+    {
+        margin: 30% 5% 5%;
+    }
+    .goodies
+    {
+        padding: 34px 5px 0;
+        height: 90px;
+        width: 110px;
+    }
+    .goodies, #credits p
+    {
+        font-size: 46px;
+    }
+    .ui-footer .ui-btn.btn-footer, .sp-slide .btn
+    {
+        font-size: 50px;
+    }
+    .info .label
+    {
+            padding: 35px 3%;
+    }
+    .label
+    {
+        font-size: 46px;
+    }
+    .info .label img
+    {
+        width: 35px;
+    }
+    .picture-character.left
+    {
+        height: 445px !important;
+    }
+    .first-name, .last-name, .label, #choc .power-charge span, .btn
+    {
+        font-size: 54px;
+    }
+    #choc .power-charge #charge
+    {
+        bottom: 22.5% ;
+    }
+     /************************* patient-alexandre.html */
+    
+    .nw-goodies
+    {
+        padding: 30px 5px 0;
+        height: 75px;
+        width: 95px;
+        font-size: 40px;
+    }
+}
+@media only screen and (max-width : 720px) /************************************ viku **/
+{
+    .first-name, .last-name, .label, #choc .power-charge span, .btn
+    {
+        font-size: 46px;
+    }
+    .goodies
+    {
+        padding: 35px 5px 0;
+        height: 95px;
+        width: 125px;
+        font-size: 52px;
+    }
+    
+    /************************* patient-alexandre.html */
+    
+    .nw-goodies
+    {
+        padding: 30px 5px 0;
+        height: 75px;
+        width: 95px;
+        font-size: 40px;
+    }
+}
+@media only screen and (max-width:640px) /************************************ viku **/
+{
+    .ui-header .ui-title, .ui-footer .ui-title
+    {
+        font-size: 36px;
+    }
+    .content-img
+    {
+        margin: 15% 5% 5%;
+    }
+    .ui-footer .ui-btn.btn-footer, .sp-slide .btn
+    {
+            font-size: 42px;
+    }
+    .goodies, #credits p
+    {
+        font-size: 44px;
+    }
+    .goodies
+    {
+        padding: 30px 5px 0;
+        height: 80px;
+        width: 100px;
+    }
+    .info .label
+    {
+            padding: 12px 3% !important;
+    }
+    .label
+    {
+        font-size: 36px;
+    }
+    .info .label img
+    {
+        width: 25px;
+    }
+    .picture-character.left
+    {
+        height: 263px !important;
+    }
+    .first-name, .last-name, .label, #choc .power-charge span, .btn
+    {
+        font-size: 36px;
+    }
+    .content h2
+    {
+        font-size: 30px;
+        top: -60px;
+        padding: 15px 20px;
+    }
+    #choc .power-charge #charge
+    {
+        bottom: 29%;
+    }
+    
+    /************************* patient-alexandre.html */
+    .patient-img
+    {
+        height: 280px;
+    }
+    .nw-goodies
+    {
+        padding: 15px 5px 0;
+        height: 56px;
+        width: 65px;
+        font-size: 30px;
+    }
+    .patient-img img
+    {
+        height: 100%;
+        margin: 0;
+        position: initial;
+    }
+    .label.name
+    {
+        font-size: 1.5em;
+    }
+    .label.txt
+    {
+        font-size: 1em;
+    }
+    
+    
+}
+@media only screen and (max-width:600px)
+{
+    .content-img
+    {
+            margin: 25% 5% 5%;
+    }
+    .sp-slide .btn
+    {
+            width: 96.5%;
+    }
+    .info .label
+    {
+        padding: 20px 3% !important;
+    }
+    .picture-character.left
+    {
+        height: 327px !important;
+    }
+}
+@media only screen and (max-width : 480px)
+{
+    .ui-header .ui-title, .ui-footer .ui-title
+    {
+        font-size: 28px;
+    }
+    .intro, .part{ padding: 4% 4% 60px 6%;}
+    .intro{ padding-bottom: 20px;}
+
+    #patient .content{ width: 94%; padding: 3% 3% 0 3%;}
+
+    .content-img
+    {
+        margin: 24% 5% 5%;
+    }
+    .ui-footer .ui-btn.btn-footer, .sp-slide .btn
+    {
+        font-size: 30px;
+    }
+    .sp-slide .btn
+    {
+        width: 96.5%;
+    }
+    .goodies
+    {
+        padding: 20px 5px 0;
+        height: 50px;
+        width: 60px;
+    }
+    .goodies, #credits p
+    {
+        font-size: 28px;
+    }
+    
+    .info .label
+    {
+            padding: 6px 3% !important;
+    }
+    .label
+    {
+        font-size: 30px;
+    }
+    .info .label img
+    {
+        width: 20px;
+    }
+    .picture-character.left
+    {
+        height: 215px !important;
+    }
+    .first-name, .last-name, .label, #choc .power-charge span, .btn
+    {
+        font-size: 32px;
+    }
+    .content h2
+    {
+        font-size: 26px;
+    }
+    #choc .power-charge #charge
+    {
+        bottom: 27%;
+    }
+    /************************* patient-alexandre.html */
+    .patient-img
+    {
+        height: 220px;
+    }
+    .nw-goodies
+    {
+        padding: 18px 5px 0;
+        height: 38px;
+        width: 45px;
+        font-size: 18px;
+    }
+    .patient-img img
+    {
+        height: 100%;
+        margin: 0;
+        position: initial;
+    }
+    .label.name
+    {
+        font-size: 1.2em;
+    }
+    .label.txt
+    {
+        font-size: 0.8em;
+    }
+}
+@media only screen and (max-width:414px) /************************************ viku **/
+{
+    .content-img
+    {
+        margin: 25% 5% 5%;
+    }
+    .ui-footer .ui-btn.btn-footer, .sp-slide .btn
+    {
+        font-size: 24px;
+    }
+    .sp-slide .btn
+    {
+        width: 96%;
+    }
+    .goodies
+    {
+        padding: 20px 5px 0;
+        height: 50px;
+        width: 60px;
+    }
+    .goodies, #credits p
+    {
+        font-size: 28px;
+    }
+    #choc .power-charge #charge
+    {
+        bottom: 28%;
+    }
+    .content h2
+    {
+        font-size: 20px;
+        top: -35px;
+        padding: 10px 14px;
+    }
+    .first-name, .last-name, .label, #choc .power-charge span, .btn
+    {
+        font-size: 26px;
+    }
+     /************************* patient-alexandre.html */
+    .patient-img
+    {
+        height: 200px;
+    }
+    .nw-goodies
+    {
+        padding: 15px 5px 0;
+        height: 40px;
+        width: 45px;
+        font-size: 22px;
+    }
+    
+}
+@media only screen and (max-width:384px) /************************************ viku **/
+{
+    .intro, .part
+    {
+        padding: 4% 4% 38px 6%;
+    }
+    .first-name, .last-name, .label, #choc .power-charge span, .btn
+    {
+        font-size: 22px;
+    }
+    .ui-header .ui-title, .ui-footer .ui-title
+    {
+        font-size: 22px;
+    }
+}
+@media only screen and (max-width:375px) /************************************ viku **/
+{
+    .ui-header .ui-title, .ui-footer .ui-title
+    {
+        font-size: 26px;
+        line-height: 12px;
+    }
+    .content-img
+    {
+        margin: 25% 5% 5%;
+    }
+    .info .label
+    {
+        padding: 2px 3% 0 !important;
+    }
+    .label
+    {
+        font-size: 20px;
+    }
+    .info .label img
+    {
+        width: 15px;
+        padding: 5px 0 0 2px;
+    }
+    .picture-character.left
+    {
+        height: 176px !important;
+    }
+    .first-name, .last-name, .label, #choc .power-charge span, .btn
+    {
+        font-size: 26px;
+    }
+    .info .label.gender img
+    {
+        height: 15px;
+    }
+    .content h2
+    {
+        padding: 5px 10px;
+    }
+    #choc .power-charge #charge
+    {
+        bottom: 30.5%;
+    }
+    
+}
+@media only screen and (max-width:360px)
+{
+    #choc .power-charge #charge{
+        bottom: 32% !important;
+    }
+    .content-img                        /************************************ viku **/
+    {
+        margin: 20% 5% 5%;
+    }
+}
+@media only screen and (max-width:320px)               /************************************ viku **/
+{
+    .ui-header .ui-title, .ui-footer .ui-title
+    {
+        font-size: 20px;
+        line-height: 16px;
+    }
+    .first-name, .last-name, .label, #choc .power-charge span, .btn
+    {
+        font-size: 16px;
+            padding: 1px;
+    }
+    .content-img
+    {
+        margin: 10% 5% 5%;
+    }
+    header {
+        font-size: 0.5em;
+        line-height: 1em;
+    }
+    h2 {
+        font-size: 1em;
+        line-height: 1em;
+    }
+    .btn {
+        margin-bottom: 5px;
+        font-size: 0.8em;
+    }
+    .info .label {
+        height: auto;
+        padding: 3%;
+    }
+    .info .label img {
+        width: 15px;
+        height: auto;
+    }
+    .label.name {
+        margin-top: 2px;
+        line-height: 10px;
+    }
+    .label
+    {
+        font-size: 16px;
+        margin-bottom: 2px;
+        
+    }
+    .info .label.gender img {
+        height: 25px;
+    }
+
+    .intro, .part{ padding: 3% 7% 10px 8%;}
+    .intro{ padding-bottom: 20px;}
+
+    #patient .content{ width: 94%; padding: 3% 3% 0 3%;}
+    #choc .power-charge a {
+        bottom: 33.5%;
+    }
+    #choc .power-charge #charge {
+        margin: 0% auto 0;
+        bottom: 27.5%;
+    }
+    
+    #choc .power-charge span {
+        font-size: 0.9em;
+    }
+    #choc .power-charge img
+    {
+        bottom: 70px;
+    }
+    #choc .power-charge span.txt-action
+    {
+        height: 80px;
+    }
+    .content-img                    /************************************ viku **/
+    {
+        margin: 10% 5% 5%;
+    }
+    .goodies
+    {
+        padding: 12px 5px 0;
+        height: 36px;
+        width: 40px;
+    }
+    #operation .content
+    {
+        margin: 30px 3%;
+    }
+    
+    .picture-character.left
+    {
+        height: 151px !important;
+    }
+    .info .label.gender img
+    {
+        height: 15px;
+    }
+     .content h2
+    {
+        padding: 5px 10px;
+        font-size: 18px;
+    }
+    .goodies, #credits p
+    {
+        font-size: 20px;
+    }
+    
+    /************************* patient-alexandre.html */
+    .patient-img
+    {
+        height: 130px;
+    }
+    .nw-goodies
+    {
+        padding: 15px 5px 0;
+        height: 35px;
+        width: 40px;
+        font-size: 18px;
+    }
+    .label.name
+    {
+            font-size: 0.8em;
+    }
+    .label.txt
+    {
+        width: 98%;
+        font-size: 0.8em;
+        line-height: 1.1em;
+    }
+}
+
+@media only screen and (max-width:240px)               /************************************ viku **/
+{
+    .ui-header .ui-title, .ui-footer .ui-title
+    {
+        font-size: 12px;
+        line-height: 16px;
+        padding: 5px 0;
+    }
+    .btn span
+    {
+        padding: 1px 0;
+    }
+    .first-name, .last-name, .label, #choc .power-charge span, .btn
+    {
+        font-size: 14px;
+    }
+    .intro
+    {
+        padding-bottom: 10px;
+    }
+    .infirmiere
+    {
+        width: 32%;
+    }
+    .ui-mobile .ui-page
+    {
+            min-height: 300px;
+    }
+    .ui-footer .ui-btn.btn-footer, .sp-slide .btn
+    {
+        font-size: 12px;
+    }
+    .intro img
+    {
+        height: 68px;
+    }
+    .intro, .part
+    {
+        padding: 3% 7% 10px 8%;
+    }
+    .content h2
+    {
+        padding: 5px 10px;
+        font-size: 16px;
+    }
+    #choc .power-charge #charge
+    {
+        bottom: 42%;
+    }
+    .goodies, #credits p
+    {
+            font-size: 15px;
+    }
+    .goodies
+    {
+        padding: 12px 5px 0;
+        height: 30px;
+        width: 30px;
+    }
+    
+    /************************* patient-alexandre.html */
+    .patient-img
+    {
+        height: 90px;
+    }
+    .nw-goodies
+    {
+        padding: 12px 5px 0;
+        height: 28px;
+        width: 28px;
+        font-size: 14px;
+    }
+    .label.name
+    {
+        font-size: 0.5em;
+    }
+    
+}
+
+@media only screen and (min-width : 767px) {
+   /* #choc .power-charge #charge {
+        bottom: 195px;
+    }*/
+    /*#choc .power-charge span {
+        font-size: 60px;
+    }*/
+    #choc .power-charge span.txt-action {
+        height: 195px;
+    }
+}

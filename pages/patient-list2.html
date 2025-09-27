@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../css/demo.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/flexslider.css" rel="stylesheet" type="text/css"/>
+
+        <script src="../js/jquery-1.11.0.min.js" type="text/javascript"></script>
+        <script src="../js/jquery.js" type="text/javascript"></script>
+        <script src="../js/jquery.flexslider.js" type="text/javascript"></script>
+
+        <script type="text/javascript" charset="utf-8">
+            $(window).load(function () {
+
+                // The slider being synced must be initialized first
+                $('#carousel').flexslider({
+                    animation: "slide",
+                    controlNav: false,
+                    animationLoop: false,
+                    slideshow: false,
+                    itemWidth: 210,
+                    itemMargin: 5,
+                    asNavFor: '#slider'
+                });
+
+                $('#slider').flexslider({
+                    animation: "slide",
+                    controlNav: false,
+                    animationLoop: false,
+                    slideshow: false,
+                    sync: "#carousel"
+                });
+                $('.flexslider').flexslider();
+            });
+        </script>
+
+    </head>
+    <body>
+        <div id="container" class="cf">
+            <div id="main" role="main">
+                <section class="slider">
+                    <div id="slider" class="flexslider">
+                        <ul class="slides">
+                            <li>
+                                <img src="../images/character/alexandre.png" alt=""/>
+                            </li>
+                            <li>
+                                <img src="../images/character/antoine.png" alt=""/>
+                            </li>
+                            <li>
+                                <img src="../images/character/boromir.png" alt=""/>
+                            </li>
+                            <li>
+                                <img src="../images/character/castella.png" alt=""/>
+                            </li>
+                            <li>
+                                <img src="../images/character/elsa.png" alt=""/>
+                            </li>
+                            <li>
+                                <img src="../images/character/frank.png" alt=""/>
+                            </li>
+                            <li>
+                                <img src="../images/character/lila.png" alt=""/>
+                            </li>
+                            <li>
+                                <img src="../images/character/phal.png" alt=""/>
+                            </li>
+                            <li>
+                                <img src="../images/character/roberto.png" alt=""/>
+                            </li>
+                            <li>
+                                <img src="../images/character/rose.png" alt=""/>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="carousel" class="flexslider">
+                        <ul class="slides">
+                            <li>
+                                <img src="../images/kitchen_adventurer_caramel.jpg" alt=""/>
+                            </li>
+                            <li>
+                                <img src="../images/kitchen_adventurer_caramel.jpg" alt=""/>
+                            </li>
+                            <li>
+                                <img src="../images/kitchen_adventurer_caramel.jpg" alt=""/>
+                            </li>
+                            <li>
+                                <img src="../images/kitchen_adventurer_caramel.jpg" alt=""/>
+                            </li>
+                            <li>
+                                <img src="../images/kitchen_adventurer_caramel.jpg" alt=""/>
+                            </li>
+                            <li>
+                                <img src="../images/kitchen_adventurer_caramel.jpg" alt=""/>
+                            </li>
+                            <li>
+                                <img src="../images/kitchen_adventurer_caramel.jpg" alt=""/>
+                            </li>
+                            <li>
+                                <img src="../images/kitchen_adventurer_caramel.jpg" alt=""/>
+                            </li>
+                            <li>
+                                <img src="../images/kitchen_adventurer_caramel.jpg" alt=""/>
+                            </li>
+                            <li>
+                                <img src="../images/kitchen_adventurer_caramel.jpg" alt=""/>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

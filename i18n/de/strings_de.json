@@ -1,0 +1,136 @@
+{
+    "languageSpecifications": [
+        {
+            "home_page": "Hauptmenü",
+            "doctor_panic": "Doctor Panic",
+            "trailer": "Trailer",
+            "intro_game": "Praktikum",
+            "easy_game": "Einfach",
+            "normal_game": "Normal",
+            "hard_game": "Schwierig",
+            "credits": "Credits",
+            "dr_panic_board": "Doctor Panic, das Brettspiel",
+            
+            "intro_line1": "Patient",
+            "intro_line2": "Alexandre Astier ist soeben in die Notaufnahme eingeliefert worden. Er ist beim großen Turnier von Carmelide in voller Rüstung von seinem Pferd gefallen. Nun liegt es an euch!",
+            "intro_line3": "Antoine Wonders ist soeben in die Notaufnahme eingeliefert worden. Er hat sich beim Basteln eines Brettspielprototypen geschnitten. Nun liegt es an euch!",
+            "intro_line4": "Boromir Stark ist soeben in die Notaufnahme eingeliefert worden. Er wurde bei einer Akupunktursitzung mit seinen Ork-Freunden verwundet. Nun liegt es an euch!",
+            "intro_line5": "Elsa Blue ist soeben in die Notaufnahme eingeliefert worden. Sie ist in ihrer Gefriertruhe steckengeblieben, als sie diese abtauen wollte. Nun liegt es an euch!",
+            "intro_line6": "Frank Enstein ist soeben in die Notaufnahme eingeliefert worden. Ihm wurden von einem verrückten Wissenschaftler ein paar Stromschläge verpasst. Nun liegt es an euch!",
+            "intro_line7": "Lila Runcloud ist soeben in die Notaufnahme eingeliefert worden. Sie hat sich mit ihrem Lasergemüseschäler einen Finger verbrannt. Nun liegt es an euch!",
+            "intro_line8": "Mr Phal ist soeben in die Notaufnahme eingeliefert worden. Sein Bart hat sich bei einem Fahrradrennen in der Kette verheddert. Nun liegt es an euch!",
+            "intro_line9": "Roberto Traga ist soeben in die Notaufnahme eingeliefert worden. Er ist ausgerutscht, als er von seinem Schiff ins Wasser springen wollte, und hat sich ein Bein gebrochen. Nun liegt es an euch!",
+            "intro_line10": "Rose Well ist soeben in die Notaufnahme eingeliefert worden. Sie ist mit ihrer fliegenden Untertasse in einer Wüste abgestürzt. Nun liegt es an euch!",
+            "intro_line11": "Ryan Private ist soeben in die Notaufnahme eingeliefert worden. Er leidet unter Gedächtnisverlust, nachdem er am Helm getroffen wurde. Helft ihm, sich wieder zu erinnern. Nun liegt es an euch!",
+            "intro_line12": "Castella Castalo ist soeben in die Notaufnahme eingeliefert worden. Sie hat sich bei ihrem letzten Konzert die Stimmbänder entzündet. Nun liegt es an euch!",
+            "intro_line13": "Willy Free ist soeben in die Notaufnahme eingeliefert worden. Er hat sich eine Lebensmittelvergiftung zugezogen (wohl zu viel Thunfisch) und sein Magen muss sofort operiert werden. Nun liegt es an euch!",
+            "intro_line14": "Patienten wechseln",
+            "intro_line15": "Diesen Patienten wählen",
+            "intro_line16": "Promo",
+            "intro_line17": "Operation beginnen!",
+            "intro_line18": "Operation erfolgreich?",
+            "intro_line19": "Patient gerettet!",
+            "intro_line21": "Partie fortsetzen …",
+            "intro_line22": "Operation erfolgreich",
+            "intro_line23": "Operation von XXX erfolgreich",
+            "intro_line24": "The 10 h 42 in intro mode",
+            "intro_line25": "Auf Facebook teilen",
+            "intro_line26": "Erneut spielen",
+            "intro_line27": "Resume game",
+            "intro_line28": "Quit Game",
+            "intro_line29": "Accomplished !",
+            "intro_line30": "shock made!",
+            "intro_line31": "unhook !",
+            "intro_line32": "Choose this patient",
+            
+            "defeat_line1": "Operation misslungen",
+            "defeat_line2": "Operation von misslungen",
+            "defeat_line3": "Das Spiel im Praktikumsmodus",
+            "defeat_line4": "Auf Facebook teilen",
+            "defeat_line5": "Erneut spielen",
+            
+            "victory_line1": "Operation successful",
+            "victory_line2": "Operation von erfolgreich",
+            "victory_line3": "The 11 h 20 in intro mode",
+            "victory_line4": "Auf Facebook teilen",
+            "victory_line5": "Erneut spielen",
+            
+            "event_line1": "Die <strong>Klimaanlage ist</strong> kaputt! Du musst die Stirn jedes anderen Spielers abtupfen.",
+            "event_line2":"Du hast <strong>Geburtstag<strong>! Alle anderen Spieler müssen für dich \"Happy Birthday\" singen und dir ein Küsschen auf die Wange geben. Fertig!",
+            
+            "event_line3":"Kompletter <strong>Stromausfall</strong>! Alle Spieler müssen ihre Augen schließen und rufen: \"Welcher Trottel hat den Strom abgestellt?\" Fertig!",
+            "event_line4": "Zwei neue <strong>Krankenhausdirektoren</strong>! Jeder Spieler muss sich seinem linken Nachbarn vorstellen (Nachname, Vorname, Aufgabe), während er ihm die Hand schüttelt. Fertig!",
+
+            "event_line5": "Der Patient ist ein Promi! Schieß ein Foto vom gesamten Team und poste es in den sozialen Netzwerken! Fertig!",
+            "event_line6": "Der Kaiserschnitt war <strong>erfolgreich<strong>! Alle Spieler müssen dem Baby (jüngster Spieler) einen Kuss auf die Wange geben. Fertig!",
+            "event_line7": "Unangekündigte <strong>Material-Überprüfung</strong>! Alle Instrument-Karten müssen sofort sterilisiert werden. Fertig!",
+            "event_line8": "<strong>Kollektiver Stromschlag</strong>! Ein Spieler jedes Teams muss sich hinlegen. Je ein anderer Spieler muss so tun, als würde er seinem Mitspieler eine Herzmassage verpassen (10x).",
+
+
+
+            "event_line9": "Der Patient ist ein bekannter <strong>Spion</strong>! Alle Spieler müssen bis zum Ende der aktuellen Behandlung mit leiser Stimme sprechen.",
+
+            "event_line10": "Wir haben <strong>den Pokal geholt</strong>! Alle müssen auf der Stelle hüpfen, ihre Arme in die Luft werfen und \"We are the Champions!\" singen.",
+
+
+            "event_line11": "Ihr habt vergessen, eure Handschuhe anzuziehen! Alle Spieler müssen mit Pantomime (und den passenden Geräuschen) darstellen, wie sie ihre Gummihandschuhe anziehen. Fertig!",
+
+
+            "event_line12":"Ihr habt vergessen, eure <strong>Handschuhe anzuziehen</strong>! Alle Spieler müssen mit Pantomime (und den passenden Geräuschen) darstellen, wie sie ihre Gummihandschuhe anziehen. Fertig!",
+
+
+            "event_line13":"Der Patient <strong>verblutet</strong>! Ein Spieler jedes Teams muss bis zum Ende der aktuellen Behandlung einen Finger auf das Herz des Patienten legen.",
+
+            "event_line14": "Eine Prüfung des Teams steht an! Jeder Spieler muss 2 Instrument-Karten gegeneinander lehnen. Fertig!",
+		
+
+            "event_line15": "<strong>Internationales<strong> Team! Jeder Spieler muss bis zum Ende der aktuellen Behandlung mit einem Akzent seiner Wahl sprechen. Fertig!",
+
+            "event_line16": "Alle Spieler trainieren für einen Marathon! Alle müssen eine Runde um den Tisch flitzen und dabei stetig zählen: \"Eins, zwei, eins, zwei, …\" Fertig!",
+
+            "event_line17":"Neues Material geliefert! Alle Spieler müssen zur Tür gehen und diese Karte wie einen Empfangsbeleg unterschreiben. Fertig!",
+
+            "event_line18": "Eine Fliege im OP! Wirf eine Karte in die Luft und rufe: \"Vorsicht, eine Fliege!\" Ein anderer Spieler muss sie fangen und zurücklegen. Falls das nicht klappt, müsst ihr es erneut versuchen!",
+
+
+
+            "event_line19": "Die tolle Leistung eures Teams wurde gelobt! Alle Spieler müssen sich gegenseitig die Hände schütteln und dabei sagen: \"Gratulation, du machst fantastische Arbeit!\" Fertig!",
+            
+
+            "event_line20": "Ein seltsamer Geruch im OP! Alle Spieler fahren mit ihrer aktuellen Behandlung fort und müssen sich dabei die Nase zuhalten. Fertig!",
+
+            "event_line21": "Ein Sauerstoffleck im OP! Alle Spieler müssen sich auf den Boden legen und mit ihren Händen hinter dem Kopf gemeinsam bis 10 zählen. Fertig!",
+
+
+            "event_line22": "Stromausfall! Um den Strom wieder anzustellen, müssen sich alle Spieler auf ihren Rücken legen und strampeln, bis sie laut bis 10 gezählt haben. Fertig!",
+
+
+            "event_line23": "The radiation alert has just started! All players rush to the nearest toilet, and enclose it count aloud to 10.",
+
+
+
+            "event_line24": "Der neue Praktikant hat den Handwagen mit den Instrumenten umgeworfen! Wirf 5 Instrument-Karten auf den Boden. Alle Spieler müssen sie aufsammeln und zurücklegen.",
+
+            "event_line25": "Ein Erdbeben! Alle Spieler müssen bis zum Ende der aktuellen Behandlung auf der Stelle hüpfen.",
+		
+            
+            "credit_line1": "App Doctor Panic 1.0",
+            "credit_line2": "Zum Spielen wird das Brettspiel \"Doctor Panic benötigt.\"",
+            "credit_line3": "<strong>Das Brettspiel:</strong><br>Autor: Roberto Fraga<br>Illustration: Éric Azagury<br>Entwicklung: Die \"Sombrero-tragenden Belgier\" alias Cédrick Caumont und Thomas Provoost<br>Künstlerische Leitung: Alexis Vanmeerbeeck<br>Regel: Ann Pichot<br>Grafische Gestaltung: Éric Azagury, Cédric Chevalier und Justine Lottin.",
+
+            "credit_line4": "<strong>Die App: </strong><br>Entwicklung: GT Holding und GDS M&C <br>Grafische Gestaltung: Cédric Chevalier und Éric Azagury",
+
+
+            "credit_line5": "Ein Spiel von Repos Production, veröffentlicht von Sombreros Production<br>Deutsche Übersetzung: Sebastian Wenzlaff, Lektorat: Simon Blome.<br>© Sombreros Production (2016)<br>Alle Rechte vorbehalten.",
+            "credit_line6": "Sombreros Production<br>Rue des comédiens, 22 – 1000 Brüssel – Belgien",
+            "credit_line7":"Diese App und deren Inhalte dürfen nur für private Zwecke verwendet werden.<br>Sounds: soundbible.com - Aufgenommen von Joe Lamb<br>www.sound-fishing.net / universal-soundbank.com",
+            "credit_line8": "",
+            "credit_line9": "",
+            
+            "patient_1": "Promokarte",
+            "patient_2": "Dies ist eine Promokarte, die es auf Spieleveranstaltungen und in unserem Web-Shop unter shop.rprod.com gibt. Ersetze sie einfach durch eine andere Patientenkarte, falls du sie nicht hast.",
+            "patient_3": "Tæt"
+
+        }
+    ]
+}

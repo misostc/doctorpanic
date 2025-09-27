@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'cafeteriaregular';
+    src: url('../fonts/cafeteria-regular-webfont.eot');
+    src: url('../fonts/cafeteria-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/cafeteria-regular-webfont.woff') format('woff'),
+         url('../fonts/cafeteria-regular-webfont.ttf') format('truetype'),
+         url('../fonts/cafeteria-regular-webfont.svg#cafeteriaregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'cafeteria-blackregular';
+    src: url('../fonts/cafbl___-webfont.eot');
+    src: url('../fonts/cafbl___-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/cafbl___-webfont.woff2') format('woff2'),
+         url('../fonts/cafbl___-webfont.woff') format('woff'),
+         url('../fonts/cafbl___-webfont.ttf') format('truetype'),
+         url('../fonts/cafbl___-webfont.svg#cafeteria-blackregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body, p{ font-family: 'cafeteriaregular'; font-size: 26px;}
+.facebookshare p{ font-size: 26px; line-height: 20px;}
+header{ font-size: 16px; line-height: 16px;}
+.first-name, .last-name, .label, #choc .power-charge span, .btn{ font-family: 'cafeteriaregular'; font-weight: normal;}
+.ui-footer .ui-btn.btn-footer,
+.sp-slide .btn{ font-family: 'cafeteriaregular'; font-weight: normal; font-size: 20px;}
+#choc .power-charge span{ font-size: 200%;}
+
+.goodies,
+#credits p{ font-family: 'cafeteriaregular'; font-weight: normal; font-size: 16px;}
+
+.label{ font-size: 26px; line-height: 30px;}
+h2{ font-family: 'cafeteria-blackregular'; font-weight: normal; font-size: 26px; line-height: 20px;}

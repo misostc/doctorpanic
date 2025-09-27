@@ -1,0 +1,474 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <title>Doctor Panic App</title> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+        <link rel="stylesheet" href="../css/jquery.mobile-1.4.5.css" />
+        <link rel="stylesheet" href="../css/doctor-panic-operation.css" />
+        <link rel="stylesheet" href="../css/font.css" />
+
+        <script src="../js/jquery.js"></script>
+        <script src="../js/jquery.mobile-1.4.5.min.js"></script>
+        <script src="../js/createjs-2015.11.26.min.js" type="text/javascript"></script>
+        <script src="../js/soundjs-0.6.2.min.js" type="text/javascript"></script>
+        <script src="../js/gamelevel.js" type="text/javascript"></script>
+
+        <script src="../cordova.js" type="text/javascript"></script>
+        <script src="../js/index.js" type="text/javascript"></script>
+
+        <link href="../css/mobile-version.css" rel="stylesheet" type="text/css"/>
+    </head> 
+    <body class="ui-overlay-c">
+        <!-- Page 3 -->
+        <section data-role="page" data-theme="a" id="operation">
+            <header data-role="header">
+                <!--<h1>Castella Castelo</h1>-->
+                <h1 class="white">
+                    <span id="clock">--:--</span>
+                    <span id="set_level"></span>
+                </h1>
+                <a href="#escape" data-rel="popup" data-position-to="window" data-transition="pop" data-icon="gear" class="ui-btn-right" data-iconpos="notext">Pause</a>
+            </header>
+
+            <div id="content">
+                <div id="canvas">
+                    <img src="../img/courbe-avec-lumiere-fond.gif" id="pulse" alt=""/>
+                    <img src="../img/ligne-droite-fond.gif" id="no-pulse" alt=""/>    
+                </div>
+
+                <div class="content op">
+                    <h2>Castella Castelo
+                        <span>
+                            <img src="../img/scotch.png" alt="Papier autocollant" title="Papier autocollant"/>       
+                        </span>
+                    </h2>
+                    <div class="picture-character left getPic">
+                        <a href="#" data-rel="" data-position-to="window" data-transition="pop" class="pctr-bx">
+                            <img src="../images/character/castella.png" title="Castella Castelo" alt="Castella Castelo">
+                        </a>
+                    </div><!-- End of picture-character -->
+
+                    <div class="info">
+                        <div class="label height"><img src="../images/ico-height.png" title="Height" alt="Height">159cm</div>
+                        <div class="label weight right"><img src="../images/ico-weight.png" title="Weight" alt="Weight">53kg</div>
+                        <div class="label gender"><img src="../images/ico-gender-woman.png" title="Gender Woman" alt="Gender Woman"></div>
+                        <div class="label blood-type blood right"><img src="../images/ico-blood.png" title="Weight" alt="Weight">0+</div>
+                        
+                    </div>
+                    <a href="#opok" id="done" data-rel="popup" data-position-to="window" data-transition="pop" class="btn yellow clear">
+                            <span class="languagespecificHTML" data-text="intro_line18">Op&eacute;ration r&eacute;ussie ?</span></a>
+                </div><!-- End of content -->
+
+                <!-- Popup -->
+                <!--                <div data-role="popup" id="phone" data-overlay-theme="b" data-theme="b" data-dismissible="false">
+                                    <a href="event-helium.html" data-rel="page"><img src="../images/phone.png"></a>
+                                </div>-->
+                <!-- End of Pop up -->
+
+                <!-- Popup -->
+                <div data-role="popup" id="phone" data-overlay-theme="b" data-theme="b" data-dismissible="false">
+                    <a href="#" data-rel="back"><img src="../img/Phone-Animation.gif" alt=""/>
+                        <span class="txt-action languagespecificHTML" data-text="intro_line31">D&eacute;crocher&nbsp;!</span>
+                    </a>         
+                </div>
+
+                <div data-role="popup" id="choc" data-overlay-theme="b" data-theme="b" class="choc">
+                    <div class="power-charge">
+                        <a href="#" data-rel="back" >
+                            <span id="charge">8888</span>
+                            <img src="../images/charge.png" alt="Decharge" title="Decharge"/>    
+                            <span class="txt-action"></span>
+                            <a href="#" data-rel="back" class="btn green clear">
+                                <span class="languagespecificHTML" data-text="intro_line30">Choc effectu&eacute;&nbsp;!</span></a>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Popup -->
+                <!--                <div data-role="popup" id="choc" data-overlay-theme="b" data-theme="b" data-dismissible="false">
+                                    <div class="power-charge"><a href="#" data-rel="back"><img src="../images/charge-2485.png" alt="Decharge" title="Decharge"></a></div>
+                                </div>-->
+                <!-- End of Pop up -->
+
+
+                <!-- Popup -->
+                <div data-role="popup" id="escape" data-overlay-theme="b" data-theme="b" data-dismissible="false">
+                    <a href="#" class="btn green" id="resume-game">
+                        <span class="languagespecificHTML" data-text="intro_line27">Reprendre la partie</span></a>
+                    <a href="#" data-rel="page" class="btn red redirectHome">
+                        <span class="languagespecificHTML" data-text="intro_line28">Quitter la partie</span></a>
+                </div>
+                <!-- End of Pop up -->
+
+                <!-- Popup -->
+                <div data-role="popup" id="opok" data-overlay-theme="b" data-theme="b" data-dismissible="false">
+                    <a href="#" data-rel="page" class="btn green redirectVictory" id="patient-save">
+                        <span class="languagespecificHTML" data-text="intro_line19">Patient sauv&eacute; !</span></a>
+                    <a href="#" class="btn red" id="patient-not-save">
+                        <span class="languagespecificHTML" data-text="intro_line21">Reprendre la partie...</span></a>
+                </div>
+                <!-- End of Pop up -->
+
+                <div data-role="popup" data-theme="a" id="event-airco" class="event">
+                    <div class="contenair">
+                        <p class="languagespecificHTML" data-text="event_line1">Il y a une panne d'<strong>air conditionn&eacute;</strong>&nbsp;! &Eacute;pongez le front de chacun des autres joueurs.</p>
+                        <a href="#" data-rel="back" class="callof"><img src="../images/call-off.png" alt="End of call" title="End of call"/>
+                            <span class="txt-done languagespecificHTML" data-text="intro_line29">Accompli&nbsp;!</span>
+                        </a>          
+                    </div>
+                </div>
+
+                <div data-role="popup" data-theme="a" id="event-anniversaire" class="event">
+                    <div class="contenair">
+                        <p class="languagespecificHTML" data-text="event_line2">C'est votre <strong>anniversaire</strong>&nbsp;! Tous les autres joueurs doivent chanter&nbsp;: "Joyeux anniversaire" et vous faire la bise.</p>
+                        <a href="#" data-rel="back" class="callof"><img src="../images/call-off.png" alt="End of call" title="End of call"/>
+                            <span class="txt-done languagespecificHTML" data-text="intro_line29">Accompli&nbsp;!</span>
+                        </a>  
+                    </div>
+                </div>
+
+                <div data-role="popup" data-theme="a" id="event-blackout" class="event">
+                    <div class="contenair">
+                        <p class="languagespecificHTML" data-text="event_line3">C'est le <strong>blackout total</strong>&nbsp;! Tous les joueurs ferment les yeux et crient&nbsp;: "Quel est l'idiot qui a coup&eacute; le courant&nbsp;?"</p>
+                        <a href="#" data-rel="back" class="callof"><img src="../images/call-off.png" alt="End of call" title="End of call"/>
+                            <span class="txt-done languagespecificHTML" data-text="intro_line29">Accompli&nbsp;!</span>
+                        </a>  
+                    </div>
+                </div>
+
+                <div data-role="popup" data-theme="a" id="event-boss" class="event">
+                    <div class="contenair">
+                        <p class="languagespecificHTML" data-text="event_line4">L'h&ocirc;pital a <strong>deux nouveaux directeurs</strong>&nbsp;! Chaque joueur sert la main de son voisin de gauche et se pr&eacute;sente par son nom, son pr&eacute;nom et sa fonction.</p>
+                        <a href="#" data-rel="back" class="callof"><img src="../images/call-off.png" alt="End of call" title="End of call"/>
+                            <span class="txt-done languagespecificHTML" data-text="intro_line29">Accompli&nbsp;!</span>
+                        </a>              
+                    </div>
+                </div>
+
+                <div data-role="popup" data-theme="a" id="event-celebrite" class="event">
+                    <div class="contenair">
+                        <p class="languagespecificHTML" data-text="event_line5">Le patient que vous op&eacute;rez est une <strong>c&eacute;l&eacute;brit&eacute;</strong>&nbsp;! Prenez maintenant une photo de tous les joueurs et publiez-la sur les r&eacute;seaux sociaux&nbsp;!</p>
+                        <a href="#" data-rel="back" class="callof"><img src="../images/call-off.png" alt="End of call" title="End of call"/>
+                            <span class="txt-done languagespecificHTML" data-text="intro_line29">Accompli&nbsp;!</span>
+                        </a>            
+                    </div>
+                </div>
+
+                <div data-role="popup" data-theme="a" id="event-cesarienne" class="event">
+                    <div class="contenair">
+                        <p class="languagespecificHTML" data-text="event_line6"><strong>La c&eacute;sarienne est r&eacute;ussie&nbsp;!</strong><br>Tous les joueurs vont embrasser le b&eacute;b&eacute; (le joueur le plus jeune).</p>
+                        <a href="#" data-rel="back" class="callof"><img src="../images/call-off.png" alt="End of call" title="End of call"/>
+                            <span class="txt-done languagespecificHTML" data-text="intro_line29">Accompli&nbsp;!</span>
+                        </a>               
+                    </div>
+                </div>
+
+                <div data-role="popup" data-theme="a" id="event-control" class="event">
+                    <div class="contenair">
+                        <p class="languagespecificHTML" data-text="event_line7">Il y a un <strong>contr&ocirc;le surprise du mat&eacute;riel&nbsp;!</strong> Toutes les cartes Instrument doivent &ecirc;tre st&eacute;rilis&eacute;es.</p>
+                        <a href="#" data-rel="back" class="callof"><img src="../images/call-off.png" alt="End of call" title="End of call"/>
+                            <span class="txt-done languagespecificHTML" data-text="intro_line29">Accompli&nbsp;!</span>
+                        </a>              
+                    </div>
+                </div>
+
+                <div data-role="popup" data-theme="a" id="event-decharge" class="event">
+                    <div class="contenair">
+                        <p class="languagespecificHTML" data-text="event_line8">Des joueurs ont re&ccedil;u une <strong>d&eacute;charge &eacute;lectrique</strong>&nbsp;! Un joueur de chaque &eacute;quipe se couche par terre et un autre joueur doit mimer 10 massages cardiaques.</p>
+                        <a href="#" data-rel="back" class="callof"><img src="../images/call-off.png" alt="End of call" title="End of call"/>
+                            <span class="txt-done languagespecificHTML" data-text="intro_line29">Accompli&nbsp;!</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div data-role="popup" data-theme="a" id="event-gagne" class="event">
+                    <div class="contenair">
+                        <p class="languagespecificHTML" data-text="event_line10">On a <strong>gagn&eacute; la coupe&nbsp;!</strong> Tous les joueurs sautent sur place en levant les bras et en criant&nbsp;: "&nbsp;Et un, et deux, et trois z&eacute;ro&nbsp;!&nbsp;"</p>
+                        <a href="#" data-rel="back" class="callof"><img src="../images/call-off.png" alt="End of call" title="End of call"/>
+                            <span class="txt-done languagespecificHTML" data-text="intro_line29">Accompli&nbsp;!</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div data-role="popup" data-theme="a" id="event-gant" class="event">
+                    <div class="contenair">
+                        <p class="languagespecificHTML" data-text="event_line11">Les joueurs ont oubli&eacute; de <strong>mettre des gants</strong>&nbsp;! Tous les joueurs doivent mimer avec bruitage le fait d'enfiler une paire de gants.</p>
+                        <a href="#" data-rel="back" class="callof"><img src="../images/call-off.png" alt="End of call" title="End of call"/>
+                            <span class="txt-done languagespecificHTML" data-text="intro_line29">Accompli&nbsp;!</span>
+                        </a>                
+                    </div>
+                </div>
+
+                <div data-role="popup" data-theme="a" id="event-helium" class="event">
+                    <div class="contenair">
+                        <p class="languagespecificHTML" data-text="event_line12">Il y a une fuite d'<strong>h&eacute;lium</strong>&nbsp;! Tous les joueurs doivent parler avec une voix tr&egrave;s aigu&euml; jusqu'&agrave; la fin de l'&eacute;preuve en cours.</p>
+                        <a href="#" data-rel="back" class="callof"><img src="../images/call-off.png" alt="End of call" title="End of call"/>
+                            <span class="txt-done languagespecificHTML" data-text="intro_line29">Accompli&nbsp;!</span>
+                        </a>                
+                    </div>
+                </div>
+
+                <div data-role="popup" data-theme="a" id="event-hemoragie" class="event">
+                    <div class="contenair">
+                        <p class="languagespecificHTML" data-text="event_line13">Le patient fait une <strong>h&eacute;morragie</strong>&nbsp;! Un joueur de chaque &eacute;quipe doit poser le doigt sur le coeur jusqu'&agrave; la fin de l'&eacute;preuve en cours.</p>
+                        <a href="#" data-rel="back" class="callof"><img src="../images/call-off.png" alt="End of call" title="End of call"/>
+                            <span class="txt-done languagespecificHTML" data-text="intro_line29">Accompli&nbsp;!</span>
+                        </a>             
+                    </div>
+                </div>
+
+                <div data-role="popup" data-theme="a" id="event-inspection" class="event">
+                    <div class="contenair">
+                        <p class="languagespecificHTML" data-text="event_line14">Il y a une <strong>inspection</strong> de l'&eacute;quipe. Chaque joueur doit faire un ch&acirc;teau avec 2 cartes Instrument.</p>
+                        <a href="#" data-rel="back" class="callof"><img src="../images/call-off.png" alt="End of call" title="End of call"/>
+                            <span class="txt-done languagespecificHTML" data-text="intro_line29">Accompli&nbsp;!</span>
+                        </a>             
+                    </div>
+                </div>
+
+                <div data-role="popup" data-theme="a" id="event-international" class="event">
+                    <div class="contenair">
+                        <p class="languagespecificHTML" data-text="event_line15">Votre &eacute;quipe est <strong>internationale</strong>&nbsp;! Chaque joueur choisit un accent et doit le garder jusqu'&agrave; la fin de l'&eacute;preuve en cours.</p>
+                        <a href="#" data-rel="back" class="callof"><img src="../images/call-off.png" alt="End of call" title="End of call"/>
+                            <span class="txt-done languagespecificHTML" data-text="intro_line29">Accompli&nbsp;!</span>
+                        </a>               
+                    </div>
+                </div>
+
+                <div data-role="popup" data-theme="a" id="event-marathon" class="event">
+                    <div class="contenair">
+                        <p class="languagespecificHTML" data-text="event_line16">Tous les joueurs s'entra&icirc;nent pour un <strong>marathon</strong>&nbsp;! Ils doivent faire un tour de table en criant "&nbsp;une, deux, une, deux...&nbsp;"</p>
+                        <a href="#" data-rel="back" class="callof"><img src="../images/call-off.png" alt="End of call" title="End of call"/>
+                            <span class="txt-done languagespecificHTML" data-text="intro_line29">Accompli&nbsp;!</span>
+                        </a>              
+                    </div>
+                </div>
+
+                <div data-role="popup" data-theme="a" id="event-materiel" class="event">
+                    <div class="contenair">
+                        <p class="languagespecificHTML" data-text="event_line17">Le <strong>nouveau mat&eacute;riel</strong> vient d'&ecirc;tre livr&eacute;. Tous les joueurs doivent aller &agrave; l'entr&eacute;e de la pi&egrave;ce et signer cette carte comme si c'&eacute;tait le bon de livraison.</p>
+                        <a href="#" data-rel="back" class="callof"><img src="../images/call-off.png" alt="End of call" title="End of call"/>
+                            <span class="txt-done languagespecificHTML" data-text="intro_line29">Accompli&nbsp;!</span>
+                        </a>               
+                    </div>
+                </div>
+
+                <div data-role="popup" data-theme="a" id="event-mouche" class="event">
+                    <div class="contenair">
+                        <p class="languagespecificHTML" data-text="event_line18">Une <strong>mouche</strong> a envahi le bloc&nbsp;! Lancez une carte en l'air en criant&nbsp;: "Attention &agrave; la mouche&nbsp;!" Un autre joueur doit rattraper la carte et la remettre en place. Sinon, on recommence&nbsp;!</p>
+                        <a href="#" data-rel="back" class="callof"><img src="../images/call-off.png" alt="End of call" title="End of call"/>
+                            <span class="txt-done languagespecificHTML" data-text="intro_line29">Accompli&nbsp;!</span>
+                        </a>              
+                    </div>
+                </div>
+
+                <div data-role="popup" data-theme="a" id="event-nickel" class="event">
+                    <div class="contenair">
+                        <p class="languagespecificHTML" data-text="event_line19">Le <strong>travail irr&eacute;prochable</strong> de votre &eacute;quipe est f&eacute;licit&eacute;&nbsp;! Tous les joueurs se serrent la main en disant&nbsp;: "F&eacute;licitation, vous faites du tr&egrave;s bon boulot&nbsp;!"</p>
+                        <a href="#" data-rel="back" class="callof"><img src="../images/call-off.png" alt="End of call" title="End of call"/>
+                            <span class="txt-done languagespecificHTML" data-text="intro_line29">Accompli&nbsp;!</span>
+                        </a>               
+                    </div>
+                </div>
+
+                <div data-role="popup" data-theme="a" id="event-odeur" class="event">
+                    <div class="contenair">
+                        <p class="languagespecificHTML" data-text="event_line20">Il y a une <strong>odeur suspecte</strong> dans le bloc&nbsp;! Tous les joueurs continuent l'&eacute;preuve en cours en se pinçant le nez.</p>
+                        <a href="#" data-rel="back" class="callof"><img src="../images/call-off.png" alt="End of call" title="End of call"/>
+                            <span class="txt-done languagespecificHTML" data-text="intro_line29">Accompli&nbsp;!</span>
+                        </a>                
+                    </div>
+                </div>
+
+                <div data-role="popup" data-theme="a" id="event-oxygen" class="event">
+                    <div class="contenair">
+                        <p class="languagespecificHTML" data-text="event_line21">Une fuite d'<strong>oxyg&egrave;ne</strong> a &eacute;t&eacute; d&eacute;tect&eacute;e dans le bloc&nbsp;! Tous les joueurs se couchent au sol, les mains sur la t&ecirc;te, puis comptent tous ensemble jusqu'&agrave; 10.</p>
+                        <a href="#" data-rel="back" class="callof"><img src="../images/call-off.png" alt="End of call" title="End of call"/>
+                            <span class="txt-done languagespecificHTML" data-text="intro_line29">Accompli&nbsp;!</span>
+                        </a>             
+                    </div>
+                </div>
+
+                <div data-role="popup" data-theme="a" id="event-panne" class="event">
+                    <div class="contenair">
+                        <p class="languagespecificHTML" data-text="event_line22">Il y a une <strong>panne de courant</strong>&nbsp;! Pour remettre l'&eacute;lectricit&eacute; en marche, tous les joueurs doivent se mettre sur le dos et p&eacute;daler en comptant &agrave; voix haute jusqu'&agrave; 10.</p>
+                        <a href="#" data-rel="back" class="callof"><img src="../images/call-off.png" alt="End of call" title="End of call"/>
+                            <span class="txt-done languagespecificHTML" data-text="intro_line29">Accompli&nbsp;!</span>
+                        </a>                
+                    </div>
+                </div>
+
+                <div data-role="popup" data-theme="a" id="event-radiation" class="event">
+                    <div class="contenair">
+                        <p class="languagespecificHTML" data-text="event_line23">L'<strong>alerte radiation</strong> vient de se d&eacute;clencher&nbsp;! Tous les joueurs foncent vers les toilettes les plus proches, s'y enferment et comptent &agrave; voix haute jusqu'&agrave; 10.</p>
+                        <a href="#" data-rel="back" class="callof"><img src="../images/call-off.png" alt="End of call" title="End of call"/>
+                            <span class="txt-done languagespecificHTML" data-text="intro_line29">Accompli&nbsp;!</span>
+                        </a>              
+                    </div>
+                </div>
+
+                <div data-role="popup" data-theme="a" id="event-stagiaire" class="event">
+                    <div class="contenair">
+                        <p class="languagespecificHTML" data-text="event_line24">Le nouveau <strong>stagiaire</strong> a renvers&eacute; le chariot contenant tous les instruments&nbsp;! Jetez 5 cartes Instrument par terre. Les joueurs doivent les remettre en place.</p>
+                        <a href="#" data-rel="back" class="callof"><img src="../images/call-off.png" alt="End of call" title="End of call"/>
+                            <span class="txt-done languagespecificHTML" data-text="intro_line29">Accompli&nbsp;!</span>
+                        </a>              
+                    </div>
+                </div>
+
+                <div data-role="popup" data-theme="a" id="event-tremblement" class="event">
+                    <div class="contenair">
+                        <p class="languagespecificHTML" data-text="event_line25">Il y a un <strong>tremblement de terre</strong>&nbsp;! Tous les joueurs sautillent sur place jusqu'&agrave; la fin de l'&eacute;preuve en cours.</p>
+                        <a href="#" data-rel="back" class="callof"><img src="../images/call-off.png" alt="End of call" title="End of call"/>
+                            <span class="txt-done languagespecificHTML" data-text="intro_line29">Accompli&nbsp;!</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <footer data-role="footer" class="clear">
+                &nbsp;
+            </footer><!-- End of footer -->
+
+        </section><!-- End of page operation -->
+
+        <script src="../js/gameplay.js" type="text/javascript"></script>
+        <script>
+
+            var ppc = new createjs.PlayPropsConfig().set({interrupt: createjs.Sound.INTERRUPT_ANY, loop: -1});
+
+            var assetsPath = "../sounds/";
+
+            var heartBeepAudio1 = "HeartBeep1";
+            var heartBeepAudio2 = "HeartBeep2";
+            var heartBeepAudio3 = "HeartBeep3";
+            var heartBeepAudio4 = "HeartBeep4";
+            var heartBeepAudio5 = "HeartBeep5";
+
+            var heartAttackAudio = "HeartAttack";
+            var phoneCallAudio = "PhoneCall";
+            var gameLostAudio = "GameLost";
+
+            var heartBeepAudioInstance;
+            var heartAttackAudioInstance;
+            var phoneCallAudioInstance;
+
+            var preload;
+
+            var gameDuration = 0;
+            var minimumInterval = 0;
+            var heartAttacks = 0;
+            var phoneCalls = 0;
+            var successRate = 0;
+            var last_lap = 0;
+            var d_level = GetQueryStringParams("level");
+            if (d_level == "discovery") {
+                gameDuration = 240000;
+                minimumInterval = 0;
+                heartAttacks = 0;
+                phoneCalls = 0;
+                successRate = 1;
+                last_lap = 220000;
+            }
+            else if (d_level == "easy" || "standerd" || "hard") {
+                gameDuration = 720000;
+                minimumInterval = 25000;
+                heartAttacks = 4;
+                phoneCalls = 4;
+                successRate = 3;
+                last_lap = 660000;
+            }
+
+            var elapsedTime = 0;
+
+            var heartAttacksCompleted = 0;
+            var phoneCallsCompleted = 0;
+            var auto_hangup_at = 10000;
+
+            var usedCharges = [];
+            var usedEvents = [];
+
+
+            var successArr = [];
+            var recover_attempts = 1;
+
+            var haInProgerss = false;
+            var pcInProgerss = false;
+            var pendingHA = false;
+            var pendingPC = false;
+
+            var completedHAs = 0;
+            var completedPCs = 0;
+
+            var laps = 4;
+            var currentLap = 0;
+
+            var gamePaused = false;
+
+            var gameEnded = false;
+            var gameWon = false;
+
+            var events = [
+                "airco"
+                        , "anniversaire"
+                        , "blackout"
+                        , "boss"
+                        , "cesarienne"
+                        , "control"
+                        , "decharge"
+                        , "espion"
+                        , "gant"
+                        , "hemoragie"
+                        , "inspection"
+                        , "international"
+                        , "marathon"
+                        , "materiel"
+                        , "nickel"
+                        , "odeur"
+                        , "oxygen"
+                        , "panne"
+                        , "radiation"
+                        , "stagiaire"
+                        , "tremblement"
+                        , "gagne"
+                        , "helium"
+            ];
+
+            $(document).on("pagecontainershow", function () {
+                gameplay.init();
+
+                $('#content').prepend('<div class="overlay" />');
+
+                $(".overlay").click(function () {
+                    $('.overlay').hide();
+                    gameplay.startGame();
+                });
+            });
+
+            $(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange MSFullscreenChange', function () {
+                if (window.innerHeight > 667) {
+                    $("#choc .power-charge #charge").css("bottom", "180px");
+                }
+                else {
+                    $("#choc .power-charge #charge").css("bottom", "184px");
+                }
+            });
+
+            function GetQueryStringParams(sParam)
+            {
+                var sPageURL = window.location.search.substring(1);
+                var sURLVariables = sPageURL.split('&');
+                for (var i = 0; i < sURLVariables.length; i++)
+                {
+                    var sParameterName = sURLVariables[i].split('=');
+                    if (sParameterName[0] == sParam)
+                    {
+                        return sParameterName[1];
+                    }
+                }
+            }
+
+        </script>
+    </body>
+</html>

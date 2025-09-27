@@ -1,0 +1,82 @@
+<!DOCTYPE html> 
+<html> 
+    <head>
+        <title>Doctor Panic App</title>
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+        <link rel="stylesheet" href="../css/jquery.mobile-1.4.5.css" />
+        <script src="../js/jquery.js"></script>
+        <script src="../js/jquery.mobile-1.4.5.min.js"></script>
+
+        <link rel="stylesheet" href="../css/doctor-panic.css" />
+        <link rel="stylesheet" href="../css/font.css" />
+        <link href="../css/mobile-version.css" rel="stylesheet" type="text/css"/>
+
+    </head> 
+    <body class="ui-overlay-c">
+        <!-- Page 1 -->
+        <section data-role="page" data-theme="a" id="homepage">
+            <header data-role="header">
+                <h1 role="heading">Menu principal</h1>
+            </header>
+
+            <article data-role="content">
+                <div class="intro">
+                    <img src="../images/doctor-panic.png" title="Doctor Panic" alt="Doctor Panic">
+                    <a href="#" id="trailerPage" data-transition="slide" class="btn nospace blue">
+                        <span class="languagespecificHTML" data-text="trailer">Trailer</span></a>
+                </div><!-- End of intro -->
+
+                <div class="part">
+                    <a href="#" id="discovery" data-transition="slide" class="btn blue">
+                        <span class="languagespecificHTML" data-text="intro_game">Partie D&eacute;couverte</span></a>
+                    <span class="separation"></span>
+                    <a href="#" id="easy" data-transition="slide" class="btn green">
+                        <span class="languagespecificHTML" data-text="easy_game">Partie facile</span></a>
+                    <a href="#" id="standerd" data-transition="slide" class="btn yellow">
+                        <span class="languagespecificHTML" data-text="normal_game">Partie moyenne</span></a>
+                    <a href="#" id="hard" data-transition="slide" class="btn nospace red">
+                        <span class="languagespecificHTML" data-text="hard_game">Partie difficile</span></a>
+
+                </div><!-- End of part -->
+            </article><!-- End of article -->
+
+            <img src="../images/infirmiere.png" title="infirmiere" alt="infirmiere" class="infirmiere">
+
+            <footer data-role="footer" data-position="fixed">
+                <a href="#" id="creditPage" title="Credits" data-transition="slide" 
+                   class="btn-footer languagespecificHTML" data-text="credits">Cr&eacute;dits</a>
+            </footer><!-- End of footer -->
+
+        </section><!-- End of homepage -->
+
+        <script src="../cordova.js" type="text/javascript"></script>
+        <script src="../js/index.js" type="text/javascript"></script>
+
+        <script>
+            $(document).ready(function () {
+                var anyArray = new Array('boromir', 'elsa', 'lila', 'roberto', 'rose', 'ryan', 'castella', 'willy');
+                var randomCharactor = anyArray[Math.floor(Math.random() * (anyArray.length - 1))];
+
+                $("#discovery").click(function () {
+                    window.location.href = "patient-" + randomCharactor + ".html?level=discovery";
+                });
+                $("#easy").click(function () {
+                    window.location.href = "patient-" + randomCharactor + ".html?level=easy";
+                });
+                $("#standerd").click(function () {
+                    window.location.href = "patient-" + randomCharactor + ".html?level=standerd";
+                });
+                $("#hard").click(function () {
+                    window.location.href = "patient-" + randomCharactor + ".html?level=hard";
+                });
+                $("#creditPage").click(function () {
+                    window.location.href = "credits.html";
+                });
+                $("#trailerPage").click(function () {
+                    window.location.href = "trailer.html";
+                });
+            });
+        </script>
+    </body>
+</html>

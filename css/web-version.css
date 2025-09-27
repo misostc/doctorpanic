@@ -1,0 +1,281 @@
+body, p{ 
+    font-family: 'cafeteriaregular'; 
+    font-size: 1.5em;
+}
+a:focus.btn.green span{ background-color: #8ec549; color: #fff;}
+.label.name{ 
+    font-size: 1.5em; 
+}
+.label.txt{ 
+    font-size: 0.8em;
+    line-height: 1.2em; 
+}
+.btn.warmgrey {
+    margin-bottom: 8px;
+}
+.intro{ 
+    background: #fff url(../img/repos-production-hospital.png) no-repeat center center;
+}
+.intro, .part {
+    padding: 2%;
+}
+span.separation{ 
+    background: url(../img/separation.jpg) repeat-x; 
+    height: 4px; 
+    margin-bottom: 4px; 
+    display: block; 
+    width: 56.5%;
+}
+.splash{ 
+    background: url(../img/load-screen.jpg) no-repeat center top; 
+    background-size: auto 100%; 
+    padding: 0; 
+    margin: 0; 
+    width: 100%; 
+    height: 100%; 
+    position: absolute; 
+    left: 0; top: 0;
+}
+#infobulle h2 {
+    font-size: 1.2em;
+}
+#infobulle p {
+    font-size: 1em;
+}
+canvas{ 
+    background: #313131 url(../img/ecg.png); 
+    width: 100%; 
+    height: 180px; 
+    position: relative; 
+    float: left;
+}
+#canvas {
+    width: 100%;
+    height: 30%;
+    position: relative;
+    text-align: center;
+}
+#canvas .heart {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    border: 1px solid red;
+    z-index: 10;
+}
+.content h2 {
+    font-family: inherit;
+    font-weight: bold;
+}
+#canvas img {
+    display: none;
+    width: 100%;
+}
+section#victory {
+    background-color: #07191F; 
+}
+section#defeat {
+    background-color: #103957; 
+}
+.victory, .defeat{ 
+    background: #07191f url(../img/victory.jpg) no-repeat center top; 
+    background-size: 100% auto; 
+    height: 100%; float: left; 
+    width: 100%; 
+    padding-top: 150px;}
+.defeat{ 
+    background: #103957 url(../img/defeat.jpg) no-repeat center top; 
+    background-size: 100% auto;
+}
+#start.ui-body-b{ 
+    background-color: none; 
+    box-shadow: none; 
+    border: 0 none; 
+    background: 0 none;
+}
+.ui-page-theme-a #start.ui-body-inherit{ 
+    background-color: none; 
+    border-color: none; 
+    text-shadow: none;
+}
+#choc-popup {
+    max-width: 100%;
+    width: 100%;
+    left: 0;
+}
+#choc .power-charge {
+    position: fixed;
+    bottom: 0;
+    height: 380px;
+}
+#choc .power-charge a {
+    display: block;
+    position: fixed;
+    bottom: 30%;
+    width: 100%;
+}
+#choc .power-charge span {
+    font-size: 190%;
+}
+#choc .power-charge #charge{
+    width: 100%;
+    margin: 0 auto;
+    z-index: 99;
+    position: fixed;
+    bottom: 184px;
+    text-align: center;
+}
+#choc .power-charge a img {
+    width: 100%;
+}
+#opok .btn.green {
+    margin-bottom: 30px;
+}
+#phone img {
+    width: 100%;
+}
+.event {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    background-size: 100% auto;
+    padding-top: 80%; 
+    background-repeat: no-repeat; 
+    background-position: center top;
+    font-size: 0.7em;
+    top: 0;
+    left: 0;
+    position: fixed;
+}
+.event .contenair {
+    bottom: 45%;
+}
+.contenair .callof{ 
+    position: absolute; 
+    left: 50%; 
+    margin-left: -48px; 
+    bottom: initial;    
+}
+.overlay { 
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7) url("../img/start.png") no-repeat 50% 50%;
+    top: 0;
+    z-index: 9;
+}
+.picture-character img {
+    height: auto;
+    width: 58%;
+    position: relative;
+    left: 0;
+    top: 0;
+    margin: auto;
+}
+.picture-character.left {
+    height: auto;
+    width: 60%;
+    margin-bottom: 2px;
+}
+.picture-character.left img { 
+    height: auto; 
+    margin-left: 0;
+    width: 100%;
+    position: inherit;
+}
+.info {
+    width: 35%;
+}
+.info .label.gender img {
+    margin: 0;
+}
+.facebookshare .picture-character.left{
+    height: auto;
+}
+.facebookshare .picture-character.left img {
+    width: 100%;
+    position: relative;
+    height: auto;
+    margin: auto;
+}
+.video-container {
+    position:relative;
+    padding-bottom:56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+}
+.video-container iframe, .video-container object, .video-container embed {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+#trailer {
+    background-color: #4ab383;
+}
+#credits a {
+    color: #3388cc !important;
+}
+@media only screen and (min-width : 767px) {
+    #choc .power-charge #charge {
+        bottom: 298px;
+    }
+    #choc .power-charge span {
+        font-size: 300%;
+    }
+    #choc .power-charge span.txt-action {
+        height: 180px;
+    }
+}
+@media only screen and (max-width : 320px) {
+    header {
+        font-size: 0.5em;
+        line-height: 1em;
+    }
+    h2 {
+        font-size: 1em;
+        line-height: 1em;
+    }
+    .btn {
+        margin-bottom: 5px;
+        font-size: 0.8em;
+    }
+    .label{
+        margin-bottom: 2px;
+    }
+    .info .label {
+        height: auto;
+        padding: 3%;
+    }
+    .info .label img {
+        width: 25%;
+        height: auto;
+    }
+    .label.name {
+        margin-top: 2px;
+    }
+    .picture-character{
+        height: 100px;
+    }
+    .picture-character img {
+        height: auto;
+        width: 40%;
+        position: relative;
+        left: 0;
+        top: 0;
+        margin: auto;
+    }
+    .info .label.gender img {
+        height: 25px;
+    }
+    #choc .power-charge a {
+        bottom: 37%;
+    }
+    #choc .power-charge #charge {
+        margin: 49% auto 0;
+    }
+    #choc .power-charge span {
+        font-size: 1.5em;
+    }
+}

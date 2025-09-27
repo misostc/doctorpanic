@@ -1,0 +1,207 @@
+/* Interface layout modification */
+
+.ui-bar-a, .ui-page-theme-a .ui-bar-inherit, html .ui-bar-a .ui-bar-inherit, html .ui-body-a .ui-bar-inherit, html body .ui-group-theme-a .ui-bar-inherit{ background: #70b798; border-bottom: 1px solid #477460;}
+.ui-footer.ui-bar-inherit{  border-bottom: 0;  border-top: 1px solid #477460;}
+.ui-btn-icon-left::after, .ui-btn-icon-right::after, .ui-btn-icon-top::after, .ui-btn-icon-bottom::after, .ui-btn-icon-notext::after{ background-color: #eb212e !important;}
+.ui-page-theme-a a, html .ui-bar-a a, html .ui-body-a a, html body .ui-group-theme-a a{ color: #fff !important; font-weight: normal; text-decoration: none;}
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper{ text-shadow: 0 none;}
+.ui-page-theme-b a, html .ui-bar-b a, html .ui-body-b a, html body .ui-group-theme-b a{ font-weight: normal;}
+
+.ui-body-b, .ui-page-theme-b .ui-body-inherit, html .ui-bar-b .ui-body-inherit, html .ui-body-b .ui-body-inherit, html body .ui-group-theme-b .ui-body-inherit, html .ui-panel-page-container-b{background-color: #fff; border-color: none; text-shadow: none;
+}
+
+.ui-footer{ position: absolute; left: 0; bottom: 0; z-index: 100; width: 100%;}
+
+.ui-content{ padding: 0;}
+
+
+/* New Interface layout component */
+.btn{ border: 3px solid #000; background: #fff; padding: 1%; display:block; text-align: center; -webkit-box-shadow: 3px 3px 0 0 rgba(77,78,72,0.6); box-shadow: 3px 3px 0 0 rgba(77,78,72,0.6); margin-bottom: 8px; text-shadow: none;}
+.btn.blue{ background: #edf6ff;}
+.btn.yellow.ui-link{ background: #fff02a; color: #000 !important; text-shadow: none !important;}
+.btn.green{ background: #f1fde1;}
+.btn.red{ background: #f8e6e6;}
+.btn.warmgrey{border: 3px solid #aaaaa9; background: #f1f1ee;}
+.btn.nospace{ margin-bottom: 0;}
+
+.btn span{ display:block; padding: 1% 0;}
+.btn.blue span{ background-color: #4989c5;}
+.btn.green span{ background-color: #8ec549;}
+.btn.yellow span{ background-color: #ffca31;}
+.btn.red span{ background-color: #ff3131;}
+.btn.warmgrey span{ background-color: #aaaaa9}
+
+.ui-footer .ui-btn.btn-footer{ background: none; border: 0 none; box-shadow: none; color: #fff; margin-left: 4%; padding: 0;}
+
+.label{ border: 3px solid #aaaaa9; width: 89%; padding: 5%; display:block; margin-bottom: 10px; background: #fff;}
+
+.clear{ clear: both;}
+
+
+/* Structure */
+#homepage,
+#patient, .content{ background: #d7dacc;}
+#patient{ padding-bottom: 30px;}
+.intro, .part{ padding: 4% 4% 60px 4%;}
+.intro{ padding-bottom: 20px;}
+
+.intro .btn, .part .btn{ width: 53%;}
+
+.intro{ background: #fff url(../images/repos-production-hospital.png) no-repeat center center;}
+.intro img{ width: 100%; margin-bottom: 5px}
+
+.part{ background: #d7dacc;}
+
+span.separation{ background: url(../images/separation.jpg) repeat-x; height: 4px; margin-bottom: 8px; display: block; width: 56.5%;}
+.infirmiere{ position: absolute; right: 0; bottom: 0; z-index: 101; width: 40%;}
+
+.goodies{ background: red; padding: 5px; display:block; position:absolute; right: 0; top: 0; color: #fff;}
+
+/* SPLASH SCREEN */
+body.splash-body{ margin: 0; padding: 0; background: #a1c8ce;}
+.splash{ background: url(../images/load-screen.jpg) no-repeat center top; background-size: auto 100%; padding: 0; margin: 0; width: 100%; height: 100%; position: absolute; left: 0; top: 0;}
+.splash img{ width: 90%; position:absolute; left: 5%; top: 5%;}
+
+.rprod{ width: 40%; margin-left: 30%;}
+#credits p{ width: 80%; margin: 3% 10%; text-align: center; color: #666;}
+#credits article{ padding-bottom: 60px; padding-top: 20px;}
+
+/* Patient */
+#patient .content{ width: 94%; padding: 3%;}
+#operation .content{ width: 84%; margin: 50px 3%; padding: 5%; position: relative; -webkit-border-radius: 10px; border-radius: 10px;}
+/*.content h2{ position: absolute; left: 0; top: -60px; padding: 15px; background: #d7dacc; -webkit-border-radius: 10px 10px 0 0; border-radius: 10px 10px 0 0; display:block;}*/
+.content h2{ position: absolute; left: 10px; top: -40px; padding: 10px 15px; background: #fff02a; border: 2px solid #000; display:block; -webkit-box-shadow: 3px 3px 0 0 rgba(77,78,72,0.6); box-shadow: 3px 3px 0 0 rgba(77,78,72,0.6); -moz-transform: rotate(-5deg); -webkit-transform: rotate(-5deg); -o-transform: rotate(-5deg); -ms-transform: rotate(-5deg); transform: rotate(-5deg); z-index: 5; text-shadow: 0 none !important;}
+.content h2 span{ position:absolute; left: -20px; top: 20px;}
+.content h2 span img{ width: 60px; -moz-transform: rotate(45deg); -webkit-transform: rotate(45deg); -o-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg);}
+.data-character{ width: 60%; margin-right: 3%; float: left;}
+
+.label.name{ float: left; margin-top: 10px; padding: 3% 5%; text-align: center;}
+.picture-character{ float: left; width: 99%; height: 200px; border: 3px solid #000; overflow: hidden; position: relative; text-align: center; overflow: hidden; background: #e9f6fa; background: -moz-linear-gradient(top, #e9f6fa 1%, #b3e2ed 100%); 
+                    background: -webkit-linear-gradient(top,  #e9f6fa 1%,#b3e2ed 100%); background: linear-gradient(to bottom,  #e9f6fa 1%,#b3e2ed 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e9f6fa', endColorstr='#b3e2ed',GradientType=0 ); }
+.picture-character img{ height: 200px; position:absolute; left: 50%; top: 0; margin-left: -100px;}
+.picture-character.left{ float: left; height: 243px; width: 60%;}
+.picture-character.left img{ height: 243px; margin-left: -122px;}
+.facebookshare .picture-character.left{ width: 40%; height: 150px; margin-bottom: 10px;}
+.facebookshare .picture-character.left img{ height: 150px; margin-left: -75px;}
+
+/* Patient list */
+.content-img{ background: #fff; margin: 5%; width: 80%; padding: 5%; display:block;}
+.sp-slide .btn{ position: absolute; left: 0; bottom: 0; width: 96%; text-shadow: 0 0 !important;}
+.sp-slide .btn.ui-link{ color: #000; text-decoration: none;}
+#example3 .sp-selected-thumbnail{ opacity: 0.5}
+
+/* Operation */
+.content.op{ float: left;  background: #d7dacc;}
+.canvas{ position:relative; float: left; width: 100%;}
+canvas{ background: #313131 url(../images/ecg.html); width: 100%; height: 180px; position: relative; float: left;}
+canvas .heart{ position:absolute; left: 10px; top: 10px; border: 1px solid red; z-index: 10;}
+.canvas .time{ color: #f5f5f5; position:absolute; right: 0; bottom: 0; z-index:2; padding: 5px 20px; background: #333; border-left: 2px solid #386536; border-top: 1px solid #4a9248; border-bottom: 0; border-right: 0; -webkit-box-shadow: -3px -3px 0 0 rgba(0,0, 0,0.6); box-shadow: -3px -3px 0 0 rgba(0,0,0,0.6); text-shadow: 0 !important;}
+.ui-overlay-a .canvas .time{ text-shadow: 0 none !important;}
+.ui-page-theme-a a.time{ color: #4a9248;}
+.info{ float: right; width: 30%; margin: 0;}
+.info h2{ margin: 0 0 4px 0;}
+.info .label{ width: 94%; float: left; padding: 3px 3%; text-align: center; height: 30px;}
+.info .label img{ margin-right: 10px; height: 100%; float: left;}
+.info .label.gender img{ float: none;}
+.info .label.right{ float: left;}
+
+.txt-action{ display: block; width: 100%; text-align: center;}
+
+.label.height{}
+.fleft{ float: left;}
+
+#escape.ui-corner-all, #opok.ui-corner-all{ border-radius: 0; width: 260px; padding: 10px;}
+
+.phone-animation img{ width: 80%; margin-left: 10%;}
+
+/* Victory */
+.victory, .defeat{ background: #07191f url(../images/victory.jpg) no-repeat center top; background-size: 100% auto; height: 100%; float: left; width: 100%; padding-top: 150px;}
+.defeat{ background: #103957 url(../images/defeat.jpg) no-repeat center top; background-size: 100% auto;}
+.facebookshare{ width: 80%; margin: 0 5%; padding: 5%; background: #fff; float: left; margin-bottom: 10px;}
+.facebookshare .info{ float: right; width: 50%;}
+.facebookshare .info p{ color: #666;}
+.center{ margin: 0 5%; width: 88%; margin-bottom: 40px;}
+
+/* Phone */
+#phone-popup .ui-popup.ui-body-inherit{ border-width: 0;}
+#choc.ui-body-b,
+#phone.ui-body-b{ background-color: none !important; box-shadow: none !important; border: 0 none !important; background: none !important;}
+.ui-page-theme-a #choc.ui-body-inherit,
+.ui-page-theme-a #phone.ui-body-inherit{ background-color: none !important; border-color: none !important; text-shadow: none !important;}
+#choc-popup{ max-width: 100% !important; width: 100% !important; overflow: hidden; height: 100%; display:block;  float: left; position:fixed; bottom: 0;}
+#choc.ui-body-b{ width: 100%;}
+#choc.ui-body-b img{ width: 100%;}
+#choc .power-charge{ position: relative; display: block; width: 100%; height: 100%; float: left;}
+#choc .power-charge img{ float: left; position:fixed; left: 0; bottom: 100px;}
+#choc .power-charge span.txt-action{ float: left; position:fixed; left: 0; bottom: 0; background: #2cab5e; color: #fff; height: 120px;}
+#choc .power-charge .btn{ width: 80%; margin-left: 10%; position:fixed; bottom: 20px;}
+
+/* ACTIONS */
+#event-cesarienne{ background-color: #000; background-image: url(../images/event/cesarienne.jpg);}
+#event-control{ background-color: #1a3c37; background-image: url(../images/event/control.jpg);}
+#event-radiation{ background-color: #9abf38; background-image: url(../images/event/radiation.jpg);}
+#event-odeur{ background-color: #589c7b; background-image: url(../images/event/odeur.jpg);}
+#event-celebrite{ background-color: #13110d; background-image: url(../images/event/celebrite.jpg);}
+#event-inspection{ background-color: #43515a; background-image: url(../images/event/inspection.jpg);}
+#event-oxygen{ background-color: #91d0d8; background-image: url(../images/event/oxygen.jpg);}
+#event-marathon{ background-color: #ee9084; background-image: url(../images/event/marathon.jpg);}
+#event-stagiaire{ background-color: #003758; background-image: url(../images/event/stagiaire.jpg);}
+#event-helium{ background-color: #414d4c; background-image: url(../images/event/helium.jpg);}
+#event-gagne{ background-color: #171e20; background-image: url(../images/event/gagne.jpg);}
+#event-panne{ background-color: #302623; background-image: url(../images/event/panne.jpg);}
+#event-espion{ background-color: #eff8fd; background-image: url(../images/event/espion.jpg);}
+#event-gant{ background-color: #f3991e; background-image: url(../images/event/gant.jpg);}
+#event-anniversaire{ background-color: #80cce1; background-image: url(../images/event/anniversaire.jpg);}
+#event-blackout{ background-color: #173043; background-image: url(../images/event/blackout.jpg);}
+#event-boss{ background-color: #23283a; background-image: url(../images/event/boss.jpg);}
+#event-tremblement{ background-color: #864a23; background-image: url(../images/event/tremblement.jpg);}
+#event-mouche{ background-color: #e9f5f8; background-image: url(../images/event/mouche.jpg);}
+#event-nickel{ background-color: #dbeefb; background-image: url(../images/event/nickel.jpg);}
+#event-international{ background-color: #477b63; background-image: url(../images/event/international.jpg);}
+#event-decharge{ background-color: #26758c; background-image: url(../images/event/decharge.jpg);}
+#event-materiel{ background-color: #696a69; background-image: url(../images/event/materiel.jpg);}
+#event-hemoragie{ background-color: #ba1a1e; background-image: url(../images/event/hemoragie.jpg);}
+#event-airco{ background-color: #9c9d3b; background-image: url(../images/event/airco.jpg);}
+
+.event.ui-page{ background-size: 100% auto; background-repeat: no-repeat; background-position: center top; position: fixed; height: 100%; width: 100%;}
+.contenair{ background: url(../images/bloc-txt@2x.png) no-repeat; background-size: 100% 100%; width: 70%; margin: 0 5%; padding: 5% 10% 30px; text-align: center; position: absolute; bottom: 140px;}
+
+#callof{ position: fixed; left: 0; bottom: 0; display: block; width: 100%; text-align: center;}
+/* .txt-done{ background: red; color: #fff; text-align: center; padding: 10px 0; width: 100%; display:block;} */
+.txt-done{ color: #fff; text-align: center; padding: 0 0 10px 0; width: 100%; display:block;}
+#callof img{ position: absolute; left: 50%; top: -48px; margin-left: -60px;}
+
+#victory{ background: #07191f;}
+#phone-popup img:hover {-webkit-animation-name : mymove; animation-name : mymove;
+                        -webkit-animation-duration: 0.8s; animation-duration: 0.8s;
+                        -webkit-animation-iteration-count: infinite; animation-iteration-count: infinite;
+                        -webkit-animation-timing-function: linear; animation-timing-function: linear;
+                        -webkit-transform-origin: 50% 100%; transform-origin: 50% 100%;
+}
+/* ANIMATION PHONE */
+/* Standard syntax */
+@keyframes mymove {
+    from {top: 0px;}
+    to {top: 200px;}
+}
+/* ANIMATION PHONE */
+@-webkit-keyframes shake{
+    0%{ -webkit-transform: translate(2px, 1px) rotate(0deg);}
+    10%{ -webkit-transform: translate(-1px, -2px) rotate(-2deg);}
+    20%{ -webkit-transform: translate(-3px, 0px) rotate(3deg);}
+    30%{ -webkit-transform: translate(0px, 2px) rotate(0deg);}
+    40%{ -webkit-transform: translate(1px, -1px) rotate(1deg); }
+    50%{ -webkit-transform: translate(-1px, 2px) rotate(-1deg); }
+    60%{ -webkit-transform: translate(-3px, 1px) rotate(0deg); }
+    70%{ -webkit-transform: translate(2px, 1px) rotate(-2deg); }
+    80%{ -webkit-transform: translate(-1px, -1px) rotate(4deg); }
+    90%{ -webkit-transform: translate(2px, 2px) rotate(0deg); }
+    100%{ -webkit-transform: translate(1px, -2px) rotate(-1deg); }
+}
+#phone{
+    -webkit-animation-name: shake;
+    -webkit-animation-duration: 0.8s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -webkit-transform-origin: 50% 100%;
+}
