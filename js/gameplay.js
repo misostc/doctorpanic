@@ -77,22 +77,14 @@ var gameplay = gameplay || {
         haInProgerss = false;
         heartAttacksCompleted++;
 
-        //createjs.Sound.stop();
-
-        window.plugins.NativeAudio.stop('DrTime1Mp3');
-        window.plugins.NativeAudio.stop('DrTime2Mp3');
-        window.plugins.NativeAudio.stop('DrTime3Mp3');
-        window.plugins.NativeAudio.stop('DrTime4Mp3');
-        window.plugins.NativeAudio.stop('DrTime5Mp3');
-        window.plugins.NativeAudio.stop('heartAttackMp3');
-        window.plugins.NativeAudio.stop('phoneRingMp3');
-        window.plugins.NativeAudio.stop('gameLostMp3');
-
-
-
-
-        gameplay.startLapAudio();
-    },
+                    //createjs.Sound.stop();
+        
+                    AudioHelper.stopAll();
+        
+        
+        
+        
+                    gameplay.startLapAudio();    },
     heartAttack: function (recover_attempt) {
         if (recover_attempt === undefined) {
             recover_attempt = 1;
@@ -126,18 +118,9 @@ var gameplay = gameplay || {
         $("#choc span#charge").text(charge);
         $("#choc").popup("open");
 
-        //createjs.Sound.stop();
+        AudioHelper.stopAll();
 
-        window.plugins.NativeAudio.stop('DrTime1Mp3');
-        window.plugins.NativeAudio.stop('DrTime2Mp3');
-        window.plugins.NativeAudio.stop('DrTime3Mp3');
-        window.plugins.NativeAudio.stop('DrTime4Mp3');
-        window.plugins.NativeAudio.stop('DrTime5Mp3');
-        window.plugins.NativeAudio.stop('heartAttackMp3');
-        window.plugins.NativeAudio.stop('phoneRingMp3');
-        window.plugins.NativeAudio.stop('gameLostMp3');
-
-        window.plugins.NativeAudio.loop('heartAttackMp3');
+        AudioHelper.loop('heartAttackMp3');
 
         //createjs.Sound.play(heartAttackAudio, ppc);
     },
@@ -193,76 +176,41 @@ var gameplay = gameplay || {
 //                createjs.Sound.stop();
 //                createjs.Sound.play(heartBeepAudio1, ppc);
 
-                window.plugins.NativeAudio.stop('DrTime1Mp3');
-                window.plugins.NativeAudio.stop('DrTime2Mp3');
-                window.plugins.NativeAudio.stop('DrTime3Mp3');
-                window.plugins.NativeAudio.stop('DrTime4Mp3');
-                window.plugins.NativeAudio.stop('DrTime5Mp3');
-                window.plugins.NativeAudio.stop('heartAttackMp3');
-                window.plugins.NativeAudio.stop('phoneRingMp3');
-                window.plugins.NativeAudio.stop('gameLostMp3');
+                AudioHelper.stopAll();
 
-                window.plugins.NativeAudio.loop('DrTime1Mp3');
+                AudioHelper.loop('DrTime1Mp3');
                 break;
             case 2:
 //                createjs.Sound.stop();
 //                createjs.Sound.play(heartBeepAudio2, ppc);
 
-                window.plugins.NativeAudio.stop('DrTime1Mp3');
-                window.plugins.NativeAudio.stop('DrTime2Mp3');
-                window.plugins.NativeAudio.stop('DrTime3Mp3');
-                window.plugins.NativeAudio.stop('DrTime4Mp3');
-                window.plugins.NativeAudio.stop('DrTime5Mp3');
-                window.plugins.NativeAudio.stop('heartAttackMp3');
-                window.plugins.NativeAudio.stop('phoneRingMp3');
-                window.plugins.NativeAudio.stop('gameLostMp3');
+                AudioHelper.stopAll();
 
-                window.plugins.NativeAudio.loop('DrTime2Mp3');
+                AudioHelper.loop('DrTime2Mp3');
                 break;
             case 3:
 //                createjs.Sound.stop();
 //                createjs.Sound.play(heartBeepAudio3, ppc);
 
-                window.plugins.NativeAudio.stop('DrTime1Mp3');
-                window.plugins.NativeAudio.stop('DrTime2Mp3');
-                window.plugins.NativeAudio.stop('DrTime3Mp3');
-                window.plugins.NativeAudio.stop('DrTime4Mp3');
-                window.plugins.NativeAudio.stop('DrTime5Mp3');
-                window.plugins.NativeAudio.stop('heartAttackMp3');
-                window.plugins.NativeAudio.stop('phoneRingMp3');
-                window.plugins.NativeAudio.stop('gameLostMp3');
+                AudioHelper.stopAll();
 
-                window.plugins.NativeAudio.loop('DrTime3Mp3');
+                AudioHelper.loop('DrTime3Mp3');
                 break;
             case 4:
 //                createjs.Sound.stop();
 //                createjs.Sound.play(heartBeepAudio4, ppc);
 
-                window.plugins.NativeAudio.stop('DrTime1Mp3');
-                window.plugins.NativeAudio.stop('DrTime2Mp3');
-                window.plugins.NativeAudio.stop('DrTime3Mp3');
-                window.plugins.NativeAudio.stop('DrTime4Mp3');
-                window.plugins.NativeAudio.stop('DrTime5Mp3');
-                window.plugins.NativeAudio.stop('heartAttackMp3');
-                window.plugins.NativeAudio.stop('phoneRingMp3');
-                window.plugins.NativeAudio.stop('gameLostMp3');
+                AudioHelper.stopAll();
 
-                window.plugins.NativeAudio.loop('DrTime4Mp3');
+                AudioHelper.loop('DrTime4Mp3');
                 break;
             case 5:
 //                createjs.Sound.stop();
 //                createjs.Sound.play(heartBeepAudio5, ppc);
 
-                window.plugins.NativeAudio.stop('DrTime1Mp3');
-                window.plugins.NativeAudio.stop('DrTime2Mp3');
-                window.plugins.NativeAudio.stop('DrTime3Mp3');
-                window.plugins.NativeAudio.stop('DrTime4Mp3');
-                window.plugins.NativeAudio.stop('DrTime5Mp3');
-                window.plugins.NativeAudio.stop('heartAttackMp3');
-                window.plugins.NativeAudio.stop('phoneRingMp3');
-                window.plugins.NativeAudio.stop('gameLostMp3');
+                AudioHelper.stopAll();
 
-                window.plugins.NativeAudio.loop('DrTime5Mp3');
+                AudioHelper.loop('DrTime5Mp3');
                 break;
             default:
                 break;
@@ -321,14 +269,7 @@ var gameplay = gameplay || {
 
 //        createjs.Sound.stop();
 
-        window.plugins.NativeAudio.stop('DrTime1Mp3');
-        window.plugins.NativeAudio.stop('DrTime2Mp3');
-        window.plugins.NativeAudio.stop('DrTime3Mp3');
-        window.plugins.NativeAudio.stop('DrTime4Mp3');
-        window.plugins.NativeAudio.stop('DrTime5Mp3');
-        window.plugins.NativeAudio.stop('heartAttackMp3');
-        window.plugins.NativeAudio.stop('phoneRingMp3');
-        window.plugins.NativeAudio.stop('gameLostMp3');
+        AudioHelper.stopAll();
 
         gameplay.startLapAudio();
     },
@@ -350,16 +291,9 @@ var gameplay = gameplay || {
 
 //        createjs.Sound.stop();
 
-        window.plugins.NativeAudio.stop('DrTime1Mp3');
-        window.plugins.NativeAudio.stop('DrTime2Mp3');
-        window.plugins.NativeAudio.stop('DrTime3Mp3');
-        window.plugins.NativeAudio.stop('DrTime4Mp3');
-        window.plugins.NativeAudio.stop('DrTime5Mp3');
-        window.plugins.NativeAudio.stop('heartAttackMp3');
-        window.plugins.NativeAudio.stop('phoneRingMp3');
-        window.plugins.NativeAudio.stop('gameLostMp3');
+        AudioHelper.stopAll();
 
-        window.plugins.NativeAudio.loop('phoneRingMp3');
+        AudioHelper.loop('phoneRingMp3');
 //        createjs.Sound.play(phoneCallAudio, ppc);
     },
     startLap: function () {
@@ -374,14 +308,7 @@ var gameplay = gameplay || {
     },
     startGame: function () {
 //        createjs.Sound.stop();
-        window.plugins.NativeAudio.stop('DrTime1Mp3');
-        window.plugins.NativeAudio.stop('DrTime2Mp3');
-        window.plugins.NativeAudio.stop('DrTime3Mp3');
-        window.plugins.NativeAudio.stop('DrTime4Mp3');
-        window.plugins.NativeAudio.stop('DrTime5Mp3');
-        window.plugins.NativeAudio.stop('heartAttackMp3');
-        window.plugins.NativeAudio.stop('phoneRingMp3');
-        window.plugins.NativeAudio.stop('gameLostMp3');
+        AudioHelper.stopAll();
 
         $("header").click(function () {
             gameplay.gamePause();
@@ -528,16 +455,9 @@ var gameplay = gameplay || {
         if (haInProgerss || pcInProgerss || !gameWon) {
 //            createjs.Sound.stop();
 
-            window.plugins.NativeAudio.stop('DrTime1Mp3');
-            window.plugins.NativeAudio.stop('DrTime2Mp3');
-            window.plugins.NativeAudio.stop('DrTime3Mp3');
-            window.plugins.NativeAudio.stop('DrTime4Mp3');
-            window.plugins.NativeAudio.stop('DrTime5Mp3');
-            window.plugins.NativeAudio.stop('heartAttackMp3');
-            window.plugins.NativeAudio.stop('phoneRingMp3');
-            window.plugins.NativeAudio.stop('gameLostMp3');
+            AudioHelper.stopAll();
 
-            window.plugins.NativeAudio.play('gameLostMp3');
+            AudioHelper.play('gameLostMp3');
 
             //setTimeout(function () {
 //                $(":mobile-pagecontainer").pagecontainer("change", "/pages/defeat", {
@@ -574,14 +494,7 @@ var gameplay = gameplay || {
 
 //        createjs.Sound.stop();
 
-        window.plugins.NativeAudio.stop('DrTime1Mp3');
-        window.plugins.NativeAudio.stop('DrTime2Mp3');
-        window.plugins.NativeAudio.stop('DrTime3Mp3');
-        window.plugins.NativeAudio.stop('DrTime4Mp3');
-        window.plugins.NativeAudio.stop('DrTime5Mp3');
-        window.plugins.NativeAudio.stop('heartAttackMp3');
-        window.plugins.NativeAudio.stop('phoneRingMp3');
-        window.plugins.NativeAudio.stop('gameLostMp3');
+        AudioHelper.stopAll();
 
     },
     gameResume: function () {

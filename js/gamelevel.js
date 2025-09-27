@@ -6,7 +6,7 @@
 
 
 $(document).ready(function () {
-    //window.plugins.orientationLock.lock("landscape");
+
     var d_level = GetQueryStringParams('level');
     var patientId = GetQueryStringParams("id");
     //$("#set_level").html("(" + d_level);

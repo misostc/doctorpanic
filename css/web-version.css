@@ -1,5 +1,5 @@
 body, p{ 
-    font-family: 'cafeteriaregular'; 
+    font-family: 'PT Sans Narrow'; 
     font-size: 1.5em;
 }
 a:focus.btn.green span{ background-color: #8ec549; color: #fff;}

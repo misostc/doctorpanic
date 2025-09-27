@@ -9,247 +9,180 @@
 var app = {
 // Application Constructor
     initialize: function () {
-        this.bindEvents();
+        this.initApp();
     },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function () {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function () {
+    initApp: function () {
 
 
-        var scheme;
+        // Preload audio resources
+            AudioHelper.preload('DrTime1Mp3', 'sounds/DrPanic_time1.ogg');
+            AudioHelper.preload('DrTime2Mp3', 'sounds/DrPanic_time2.ogg');
+            AudioHelper.preload('DrTime3Mp3', 'sounds/DrPanic_time3.ogg');
+            AudioHelper.preload('DrTime4Mp3', 'sounds/DrPanic_time4.ogg');
+            AudioHelper.preload('DrTime5Mp3', 'sounds/DrPanic_time5.ogg');
+            AudioHelper.preload('heartAttackMp3', 'sounds/arret_cardiaque.ogg');
+            AudioHelper.preload('phoneRingMp3', 'sounds/sound_phone.ogg');
+            AudioHelper.preload('gameLostMp3', 'sounds/lost.ogg');
 
-// Don't forget to add the cordova-plugin-device plugin for `device.platform`
-        if (device.platform === 'iOS') {
-            scheme = 'fb://';
-        }
-        else if (device.platform === 'Android') {
-            scheme = 'com.facebook.katana';
-        }
-//        appAvailability.check(
-//                scheme, // URI Scheme or Package Name
-//                function () {  // Success callback
-//                    NSLogger.log(scheme + ' is available :)');
-//                },
-//                function () {  // Error callback
-//                    NSLogger.log(scheme + ' is not available :(');
-//                }
-//        );
+        AudioHelper.stopAll();
 
-
-        if (window.plugins && window.plugins.NativeAudio) {
-            // Preload audio resources
-            window.plugins.NativeAudio.preloadComplex('DrTime1Mp3', 'sounds/DrPanic_time1.mp3', 1, 1, 0, function (msg) {
-            }, function (msg) {
-                console.log('error: ' + msg);
-            });
-            window.plugins.NativeAudio.preloadComplex('DrTime2Mp3', 'sounds/DrPanic_time2.mp3', 1, 1, 0, function (msg) {
-            }, function (msg) {
-                console.log('error: ' + msg);
-            });
-            window.plugins.NativeAudio.preloadComplex('DrTime3Mp3', 'sounds/DrPanic_time3.mp3', 1, 1, 0, function (msg) {
-            }, function (msg) {
-                console.log('error: ' + msg);
-            });
-            window.plugins.NativeAudio.preloadComplex('DrTime4Mp3', 'sounds/DrPanic_time4.mp3', 1, 1, 0, function (msg) {
-            }, function (msg) {
-                console.log('error: ' + msg);
-            });
-            window.plugins.NativeAudio.preloadComplex('DrTime5Mp3', 'sounds/DrPanic_time5.mp3', 1, 1, 0, function (msg) {
-            }, function (msg) {
-                console.log('error: ' + msg);
-            });
-            window.plugins.NativeAudio.preloadComplex('heartAttackMp3', 'sounds/arret_cardiaque.mp3', 1, 1, 0, function (msg) {
-            }, function (msg) {
-                console.log('error: ' + msg);
-            });
-            window.plugins.NativeAudio.preloadComplex('phoneRingMp3', 'sounds/sound_phone.mp3', 1, 1, 0, function (msg) {
-            }, function (msg) {
-                console.log('error: ' + msg);
-            });
-            window.plugins.NativeAudio.preloadComplex('gameLostMp3', 'sounds/lost.mp3', 1, 1, 0, function (msg) {
-            }, function (msg) {
-                console.log('error: ' + msg);
-            });
-        }
-
-        if (window.plugins.NativeAudio.play) {
-            window.plugins.NativeAudio.stop('DrTime1Mp3');
-            window.plugins.NativeAudio.stop('DrTime2Mp3');
-            window.plugins.NativeAudio.stop('DrTime3Mp3');
-            window.plugins.NativeAudio.stop('DrTime4Mp3');
-            window.plugins.NativeAudio.stop('DrTime5Mp3');
-            window.plugins.NativeAudio.stop('heartAttackMp3');
-            window.plugins.NativeAudio.stop('phoneRingMp3');
-        }
-
-        app.receivedEvent('deviceready');
         var cLANGUAGE = null;
-        navigator.globalization.getPreferredLanguage(
-                //Get Language from Settings
-                        function (locale) {
-                            cLANGUAGE = locale.value;
-                            languageControls(cLANGUAGE);
-                        },
-                        //On Failure set language to english
-                                function () {
-                                    cLANGUAGE = "en";
-                                }
-                        );
-                        var patientID = GetQueryStringParams("id");
-                        
-                        var defeat_1;
-                        var defeat_2;
-                        var victory_1;
-                        var victory_2;
-                        var languageSpecificObject = null;
-                        var languageSpecificURL = "";
-                        var frenchLanguageSpecificURL = "../i18n/fr/strings_fr.json";
-                        var englishLanguageSpecificURL = "../i18n/en/strings_en.json";
-                        var germanLanguageSpecificURL = "../i18n/de/strings_de.json";
-                        var today = new Date();
-                        var dd = today.getDate();
-                        var month = today.getMonth() + 1; //January is 0, so always add + 1
-                        var hh = today.getHours();
-                        var mm = today.getMinutes();
-                        var ss = today.getSeconds();
-                        var yyyy = today.getFullYear();
-                        if (dd < 10) {
-                            dd = '0' + dd
-                        }
-                        if (mm < 10) {
-                            mm = '0' + mm
-                        }
-                        if (month < 10) {
-                            month = '0' + month
-                        }
-                        if (hh < 10) {
-                            hh = '0' + hh
-                        }
-                        if (ss < 10) {
-                            ss = '0' + ss
-                        }
-                        today = dd + ':' + month + ':' + yyyy;
-                        var shareDatetime = yyyy + '-' + month + '-' + dd + '%20' + hh + ':' + mm + ':' + ss;
-                        var dt = new Date();
-                        var hh = dt.getHours();
-                        var minute = dt.getMinutes();
-                        //Function to make network call according to language on load
-                        var languageControls = function (language) {
+        // Use navigator.language for browser-based language detection
+        cLANGUAGE = navigator.language || navigator.userLanguage; // Fallback for older browsers
+        app.languageControls(cLANGUAGE);
+
+        app.dd = app.today.getDate();
+        app.month = app.today.getMonth() + 1; //January is 0, so always add + 1
+        app.hh = app.today.getHours();
+        app.mm = app.today.getMinutes();
+        app.ss = app.today.getSeconds();
+        app.yyyy = app.today.getFullYear();
+        if (app.dd < 10) {
+            app.dd = '0' + app.dd
+        }
+        if (app.mm < 10) {
+            app.mm = '0' + app.mm
+        }
+        if (app.month < 10) {
+            app.month = '0' + app.month
+        }
+        if (app.hh < 10) {
+            app.hh = '0' + app.hh
+        }
+        if (app.ss < 10) {
+            app.ss = '0' + app.ss
+        }
+        app.today = app.dd + ':' + app.month + ':' + app.yyyy;
+        app.shareDatetime = app.yyyy + '-' + app.month + '-' + app.dd + '%20' + app.hh + ':' + app.mm + ':' + app.ss;
+        app.dt = new Date();
+        app.hh = app.dt.getHours();
+        app.minute = app.dt.getMinutes();
+
+        app.initSocialSharing();
+    },
+    patientID: GetQueryStringParams("id"),
+    defeat_1: null,
+    defeat_2: null,
+    victory_1: null,
+    victory_2: null,
+    languageSpecificObject: null,
+    languageSpecificURL: "",
+    frenchLanguageSpecificURL: "../i18n/fr/strings_fr.json",
+    englishLanguageSpecificURL: "../i18n/en/strings_en.json",
+    germanLanguageSpecificURL: "../i18n/de/strings_de.json",
+    today: new Date(),
+    dd: null,
+    month: null,
+    hh: null,
+    mm: null,
+    ss: null,
+    yyyy: null,
+    shareDatetime: null,
+    dt: new Date(),
+    chrName: null,
+    pageName: null,
+
+    //Function to make network call according to language on load
+    languageControls: function (language) {
 //                            alert(language.toString());
-                            if ((language.toString() == "fr") || (language.toString() == "french") || (language.toString().indexOf("fr") != -1)) {
-                                lang_code = "fr";
-                                languageSpecificURL = frenchLanguageSpecificURL;
-                                $("#curr_datetime").html("Le " + today + " &agrave; " + hh + "h" + minute + " en mode facile");
-                                defeat_1 = ", heure du decees:";
-                                defeat_2 = "";
-                                victory_1 = ", le temps de sauver:";
-                                victory_2 = "";
-                                $("#tutorialVideo").prop("src", "https://www.youtube.com/embed/R9MSQNvIVRA?autoplay=1");
-                            }
-                            else if ((language.toString() == "de") || (language.toString() == "deutsch") || (language.toString().indexOf("de") != -1)) {
-                                lang_code = "de";
-                                languageSpecificURL = germanLanguageSpecificURL;
-                                $("#curr_datetime").html("Am " + today + " " + hh + "h" + minute + " mit Schwierigkeit â€ždiscoveryâ€œ");
-                                defeat_1 = ", dÃ¸dstidspunktet:";
-                                defeat_2 = "";
-                                victory_1 = ", cirka gemme:";
-                                victory_2 = "";
-                                $("#tutorialVideo").prop("src", "https://www.youtube.com/embed/VQOSZ_cLJ4g?autoplay=1");
-                            }
-                            else {
-                                //Default English
-                                lang_code = "en";
-                                languageSpecificURL = englishLanguageSpecificURL;
-                                $("#curr_datetime").html("The " + today + " " + hh + "h" + minute + " in intro mode");
-                                defeat_1 = ", time of death:";
-                                defeat_2 = "";
-                                victory_1 = ", time of save:";
-                                victory_2 = "";
-                                $("#tutorialVideo").prop("src", "https://www.youtube.com/embed/VQOSZ_cLJ4g?autoplay=1");
-                            }
-                            //Make an ajax call to strings.json files
-                            onNetworkCall(languageSpecificURL, function (msg) {
-                                languageSpecificObject = JSON.parse(msg);
-                                $(".languagespecificHTML").each(function () {
-                                    $(this).html(languageSpecificObject.languageSpecifications[0][$(this).data("text")]);
-                                });
-                                $(".languageSpecificPlaceholder").each(function () {
-                                    $(this).attr("placeholder", languageSpecificObject.languageSpecifications[0][$(this).data("text")]);
-                                });
-                                $(".languageSpecificValue").each(function () {
-                                    $(this).attr("value", languageSpecificObject.languageSpecifications[0][$(this).data("text")]);
-                                });
-                            });
-                        };
-                        //Function to get specific value with unique key
-                        var getLanguageValue = function (key) {
-                            value = languageSpecificObject.languageSpecifications[0][key];
-                            return value;
-                        };
-                        //Network Call
-                        var onNetworkCall = function (urlToHit, successCallback) {
-                            $.ajax({
-                                type: "POST",
-                                url: urlToHit,
-                                timeout: 30000,
-                            }).done(function (msg) {
-                                successCallback(msg);
-                            }).fail(function (jqXHR, textStatus, errorThrown) {
-                                alert("Internal Server Error");
-                            });
-                        }
-                        var chrName = window.localStorage.getItem('ch_name');
-                        var pageName = window.localStorage.getItem('pageName');
-                        $(".operationVictory").html(chrName);
 
+        // first, check if language is stored in local storage
+        if (window.localStorage.getItem("language")) {
+            language = window.localStorage.getItem("language");
+        }
+        
+        if ((language.toString() == "cs") || (language.toString() == "czech") || (language.toString().indexOf("cs") != -1)) {
+            lang_code = "cs";
+            app.languageSpecificURL = "../i18n/cs/strings_cs.json";
+            $("#curr_datetime").html("Dne " + app.today + " v " + app.hh + "h" + app.minute + " v jednoduchém režimu");
+            app.defeat_1 = ", čas úmrtí:";
+            app.defeat_2 = "";
+            app.victory_1 = ", čas záchrany:";
+            app.victory_2 = "";
+            $("#tutorialVideo").prop("src", "https://www.youtube.com/embed/R9MSQNvIVRA?autoplay=1");
+        } else if ((language.toString() == "fr") || (language.toString() == "french") || (language.toString().indexOf("fr") != -1)) {
+            lang_code = "fr";
+            app.languageSpecificURL = app.frenchLanguageSpecificURL;
+            $("#curr_datetime").html("Le " + app.today + " &agrave; " + app.hh + "h" + app.minute + " en mode facile");
+            app.defeat_1 = ", heure du decees:";
+            app.defeat_2 = "";
+            app.victory_1 = ", le temps de sauver:";
+            app.victory_2 = "";
+            $("#tutorialVideo").prop("src", "https://www.youtube.com/embed/R9MSQNvIVRA?autoplay=1");
+        }
+        else if ((language.toString() == "de") || (language.toString() == "deutsch") || (language.toString().indexOf("de") != -1)) {
+            lang_code = "de";
+            app.languageSpecificURL = app.germanLanguageSpecificURL;
+            $("#curr_datetime").html("Am " + app.today + " " + app.hh + "h" + app.minute + " mit Schwierigkeit â€ždiscoveryâ€œ");
+            app.defeat_1 = ", dÃ¸dstidspunktet:";
+            app.defeat_2 = "";
+            app.victory_1 = ", cirka gemme:";
+            app.victory_2 = "";
+            $("#tutorialVideo").prop("src", "https://www.youtube.com/embed/VQOSZ_cLJ4g?autoplay=1");
+        }
+        else {
+            //Default English
+            lang_code = "en";
+            app.languageSpecificURL = app.englishLanguageSpecificURL;
+            $("#curr_datetime").html("The " + app.today + " " + app.hh + "h" + app.minute + " in intro mode");
+            app.defeat_1 = ", time of death:";
+            app.defeat_2 = "";
+            app.victory_1 = ", time of save:";
+            app.victory_2 = "";
+            $("#tutorialVideo").prop("src", "https://www.youtube.com/embed/VQOSZ_cLJ4g?autoplay=1");
+        }
+        //Make an ajax call to strings.json files
+        app.onNetworkCall(app.languageSpecificURL, function (msg) {
+            app.languageSpecificObject = msg;
+            $(".languagespecificHTML").each(function () {
+                $(this).html(app.languageSpecificObject.languageSpecifications[0][$(this).data("text")]);
+            });
+            $(".languageSpecificPlaceholder").each(function () {
+                $(this).attr("placeholder", app.languageSpecificObject.languageSpecifications[0][$(this).data("text")]);
+            });
+            $(".languageSpecificValue").each(function () {
+                $(this).attr("value", app.languageSpecificObject.languageSpecifications[0][$(this).data("text")]);
+            });
+        });
+    },
+    //Function to get specific value with unique key
+    getLanguageValue: function (key) {
+        value = app.languageSpecificObject.languageSpecifications[0][key];
+        return value;
+    },
+    //Network Call
+    onNetworkCall: function (urlToHit, successCallback) {
+        $.ajax({
+            type: "GET",
+            url: urlToHit,
+            timeout: 30000,
+        }).done(function (msg) {
+            successCallback(msg);
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            alert("Internal Server Error");
+        });
+    },
+    initSocialSharing: function() {
+        app.chrName = window.localStorage.getItem('ch_name');
+        app.pageName = window.localStorage.getItem('pageName');
+        $(".operationVictory").html(app.chrName);
 
-
-                        if (pageName == "victory") {
-                            var imagePath = "www/FBShare/" + chrName + "-alive.jpg";
-                            //var sharedlink = "http://docpanic.com/game/" + lang_code + "/share/" + patientID + "/win/" + shareDatetime;
-
-                            $(".FBShare").click(function () {
-
-                                //window.plugins.socialsharing.shareViaFacebook(chrName + victory_1 + today + " " + hh + "h" + minute, imagePath, null,
-                                window.plugins.socialsharing.shareViaFacebook("", null, "http://docpanic.com/game/" + lang_code + "/share/" + patientID + "/win/" + shareDatetime,
-                                        function () {
-                                            console.log('share ok')
-                                        },
-                                        function (errormsg) {
-                                            console.log('share cancel')
-                                            //alert("Please install Facebook mobile app to enable sharing.");
-                                        })
-                            });
-                        }
-                        else {
-                            var imagePath = "www/FBShare/" + chrName + "-dead.jpg";
-                            $(".FBShare").click(function () {
-//                                window.plugins.socialsharing.shareViaFacebook(chrName + defeat_1 + today + " " + hh + "h" + minute, imagePath, null,
-                                window.plugins.socialsharing.shareViaFacebook("", null, "http://docpanic.com/game/" + lang_code + "/share/" + patientID + "/lost/" + shareDatetime,
-                                        function () {
-                                            console.log('share ok')
-                                        },
-                                        function (errormsg) {
-                                            //alert("Please install Facebook mobile app to enable sharing.")
-                                            console.log('share cancel')
-                                        })
-                            });
-                        }
-                    },
-            receivedEvent: function (id) {
-
-                console.log('Received Event: ' + id);
-            }
-        };
+        if (app.pageName == "victory") {
+            var imagePath = "www/FBShare/" + app.chrName + "-alive.jpg";
+            $(".FBShare").click(function () {
+                var facebookShareUrl = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent("http://docpanic.com/game/" + lang_code + "/share/" + app.patientID + "/win/" + app.shareDatetime);
+                window.open(facebookShareUrl, '_system');
+            });
+        }
+        else {
+            var imagePath = "www/FBShare/" + app.chrName + "-dead.jpg";
+            $(".FBShare").click(function () {
+                var facebookShareUrl = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent("http://docpanic.com/game/" + lang_code + "/share/" + app.patientID + "/lost/" + app.shareDatetime);
+                window.open(facebookShareUrl, '_system');
+            });
+        }
+    }
+};
 app.initialize();
 function loadIframe(iframeName, url) {
     var $iframe = $('#' + iframeName);
