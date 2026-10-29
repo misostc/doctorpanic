@@ -57,8 +57,6 @@ var app = {
         app.dt = new Date();
         app.hh = app.dt.getHours();
         app.minute = app.dt.getMinutes();
-
-        app.initSocialSharing();
     },
     patientID: GetQueryStringParams("id"),
     defeat_1: null,
@@ -94,7 +92,6 @@ var app = {
         if ((language.toString() == "cs") || (language.toString() == "czech") || (language.toString().indexOf("cs") != -1)) {
             lang_code = "cs";
             app.languageSpecificURL = "../i18n/cs/strings_cs.json";
-            $("#curr_datetime").html("Dne " + app.today + " v " + app.hh + "h" + app.minute + " v jednoduchém režimu");
             app.defeat_1 = ", čas úmrtí:";
             app.defeat_2 = "";
             app.victory_1 = ", čas záchrany:";
@@ -103,7 +100,6 @@ var app = {
         } else if ((language.toString() == "fr") || (language.toString() == "french") || (language.toString().indexOf("fr") != -1)) {
             lang_code = "fr";
             app.languageSpecificURL = app.frenchLanguageSpecificURL;
-            $("#curr_datetime").html("Le " + app.today + " &agrave; " + app.hh + "h" + app.minute + " en mode facile");
             app.defeat_1 = ", heure du decees:";
             app.defeat_2 = "";
             app.victory_1 = ", le temps de sauver:";
@@ -113,7 +109,6 @@ var app = {
         else if ((language.toString() == "de") || (language.toString() == "deutsch") || (language.toString().indexOf("de") != -1)) {
             lang_code = "de";
             app.languageSpecificURL = app.germanLanguageSpecificURL;
-            $("#curr_datetime").html("Am " + app.today + " " + app.hh + "h" + app.minute + " mit Schwierigkeit â€ždiscoveryâ€œ");
             app.defeat_1 = ", dÃ¸dstidspunktet:";
             app.defeat_2 = "";
             app.victory_1 = ", cirka gemme:";
@@ -124,7 +119,6 @@ var app = {
             //Default English
             lang_code = "en";
             app.languageSpecificURL = app.englishLanguageSpecificURL;
-            $("#curr_datetime").html("The " + app.today + " " + app.hh + "h" + app.minute + " in intro mode");
             app.defeat_1 = ", time of death:";
             app.defeat_2 = "";
             app.victory_1 = ", time of save:";
@@ -134,6 +128,7 @@ var app = {
         //Make an ajax call to strings.json files
         app.onNetworkCall(app.languageSpecificURL, function (msg) {
             app.languageSpecificObject = msg;
+            app.renderGameSummary();
             $(".languagespecificHTML").each(function () {
                 $(this).html(app.languageSpecificObject.languageSpecifications[0][$(this).data("text")]);
             });
@@ -162,25 +157,43 @@ var app = {
             alert("Internal Server Error");
         });
     },
-    initSocialSharing: function() {
-        app.chrName = window.localStorage.getItem('ch_name');
-        app.pageName = window.localStorage.getItem('pageName');
-        $(".operationVictory").html(app.chrName);
+    levelNames: {
+        discovery: ["intro_game", "Partie D&eacute;couverte"],
+        easy: ["easy_game", "Partie facile"],
+        standerd: ["normal_game", "Partie moyenne"],
+        hard: ["hard_game", "Partie difficile"]
+    },
+    // Fills the victory/defeat page with the stats saved by gameplay.saveSummary
+    renderGameSummary: function () {
+        if (!$(".summary-stats").length) {
+            return;
+        }
 
-        if (app.pageName == "victory") {
-            var imagePath = "www/FBShare/" + app.chrName + "-alive.jpg";
-            $(".FBShare").click(function () {
-                var facebookShareUrl = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent("http://docpanic.com/game/" + lang_code + "/share/" + app.patientID + "/win/" + app.shareDatetime);
-                window.open(facebookShareUrl, '_system');
-            });
+        var summary = null;
+        try {
+            summary = JSON.parse(window.localStorage.getItem("lastGame"));
+        } catch (e) {
         }
-        else {
-            var imagePath = "www/FBShare/" + app.chrName + "-dead.jpg";
-            $(".FBShare").click(function () {
-                var facebookShareUrl = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent("http://docpanic.com/game/" + lang_code + "/share/" + app.patientID + "/lost/" + app.shareDatetime);
-                window.open(facebookShareUrl, '_system');
-            });
+        if (!summary) {
+            $(".summary-stats").hide();
+            return;
         }
+
+        var seconds = Math.floor(summary.elapsed / 1000);
+        var secondsString = (seconds % 60).toString();
+        if (secondsString.length < 2) {
+            secondsString = "0" + secondsString;
+        }
+
+        var level = app.levelNames[summary.level] || app.levelNames.easy;
+        $("#summary-level").addClass("languagespecificHTML").attr("data-text", level[0]).html(level[1]);
+        $("#summary-time").text(Math.floor(seconds / 60) + ":" + secondsString);
+        $("#summary-heart").text(summary.heartAttacks);
+        $("#summary-calls").text(summary.phoneCalls);
+        $("#summary-date").text(new Date(summary.date).toLocaleString(lang_code, {
+            day: "numeric", month: "short", hour: "2-digit", minute: "2-digit"
+        }));
+        $(".operationVictory").text(summary.patient);
     }
 };
 app.initialize();

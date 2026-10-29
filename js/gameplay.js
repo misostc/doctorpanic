@@ -338,7 +338,7 @@ var gameplay = gameplay || {
 //                    changeHash: false,
 //                    reloadPage: true
 //                });
-                alert("1");
+                gameplay.saveSummary(false);
                 window.location.href = "defeat.html?level=" + d_level + "&page=defeat&id=" + patientId;
             }
             else {
@@ -452,6 +452,8 @@ var gameplay = gameplay || {
 
         $("#clock").text("00:00");
 
+        gameplay.saveSummary(gameWon && !haInProgerss && !pcInProgerss);
+
         if (haInProgerss || pcInProgerss || !gameWon) {
 //            createjs.Sound.stop();
 
@@ -475,6 +477,22 @@ var gameplay = gameplay || {
 //                transition: "slideup"
 //            });
             window.location.href = "victory.html?level=" + d_level + "&page=victory&id=" + patientId;
+        }
+    },
+    saveSummary: function (won) {
+        // Read by the victory/defeat page to show what happened in this game
+        var summary = {
+            won: won,
+            patient: $.trim($(".content.op h2").text()),
+            level: d_level,
+            elapsed: elapsedTime,
+            heartAttacks: completedHAs,
+            phoneCalls: completedPCs,
+            date: new Date().getTime()
+        };
+        try {
+            window.localStorage.setItem("lastGame", JSON.stringify(summary));
+        } catch (e) {
         }
     },
     gamePause: function () {

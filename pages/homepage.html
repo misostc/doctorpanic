@@ -5,9 +5,9 @@
 <link rel="manifest" href="../manifest.json">
 
 <!-- PWA Meta Tags -->
-<meta name="theme-color" content="#1976d2">
+<meta name="theme-color" content="#70b798">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <link rel="apple-touch-icon" href="../images/icon-192.png">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
 
@@ -19,19 +19,19 @@
         <link rel="stylesheet" href="../css/font.css" />
         <link href="../css/mobile-version.css" rel="stylesheet" type="text/css"/>
 
+        <link href="../css/mobile-fixes.css" rel="stylesheet" type="text/css"/>
+
     </head> 
     <body class="ui-overlay-c">
         <!-- Page 1 -->
         <section data-role="page" data-theme="a" id="homepage">
             <header data-role="header">
-                <h1 role="heading">Menu principal</h1>
+                <h1 role="heading" class="languagespecificHTML" data-text="home_menu">Menu principal</h1>
             </header>
 
             <article data-role="content">
                 <div class="intro">
                     <img src="../images/doctor-panic.png" title="Doctor Panic" alt="Doctor Panic">
-                    <a href="#" id="trailerPage" data-transition="slide" class="btn nospace blue">
-                        <span class="languagespecificHTML" data-text="trailer">Trailer</span></a>
                 </div><!-- End of intro -->
 
                 <div class="part">
@@ -47,11 +47,11 @@
                     <span class="separation"></span>
 
                     <a href="#" id="czechSelector" class="btn warmgrey" onclick="localStorage.setItem('language', 'cs'); location.reload();">
-                        <span>Czech</span></a>
+                        <span>&#268;e&#353;tina</span></a>
                     <a href="#" id="englishSelector" class="btn warmgrey" onclick="localStorage.setItem('language', 'en'); location.reload();">
                         <span>English</span></a>
-                    <a href="#" id="frenchSelector" class="btn warmgrey" onclick="localStorage.setItem('language', 'fr'); location.reload();"><span>French</span></a>
-                    <a href="#" id="germanSelector" class="btn warmgrey" onclick="localStorage.setItem('language', 'de'); location.reload();"><span>German</span></a>
+                    <a href="#" id="frenchSelector" class="btn warmgrey" onclick="localStorage.setItem('language', 'fr'); location.reload();"><span>Fran&ccedil;ais</span></a>
+                    <a href="#" id="germanSelector" class="btn warmgrey" onclick="localStorage.setItem('language', 'de'); location.reload();"><span>Deutsch</span></a>
                 </div><!-- End of language-selector -->
 
             </article><!-- End of article -->
@@ -88,9 +88,6 @@
                 });
                 $("#creditPage").click(function () {
                     window.location.href = "credits.html";
-                });
-                $("#trailerPage").click(function () {
-                    window.location.href = "trailer.html";
                 });
             });
         </script>

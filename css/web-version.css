@@ -188,10 +188,10 @@ section#defeat {
 .info .label.gender img {
     margin: 0;
 }
-.facebookshare .picture-character.left{
+.game-summary .picture-character.left{
     height: auto;
 }
-.facebookshare .picture-character.left img {
+.game-summary .picture-character.left img {
     width: 100%;
     position: relative;
     height: auto;

@@ -1,0 +1,124 @@
+/*
+ * Mobile / PWA layout fixes. Loaded last on every page so these rules win
+ * over the per-device breakpoints in mobile-version.css. Sizes here are
+ * relative (vw/vh/%) so they hold for any phone width.
+ */
+
+/* Header titles: jQM reserves 30% on each side, which truncates longer
+   titles ("Operation success...") on narrow phones */
+.ui-header .ui-title {
+    margin-left: 48px;
+    margin-right: 48px;
+}
+
+/* ---------- Homepage ---------- */
+
+/* Keep the last language button clear of the footer */
+#homepage .part {
+    padding-bottom: 90px;
+}
+
+/* ---------- Operation page ---------- */
+
+/* Fill exactly one screen: ECG takes whatever height the patient card leaves */
+.ui-page:has(> #content) {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    height: 100dvh;
+}
+.ui-page:has(> #content) > #content {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    position: relative;
+}
+#content > #canvas {
+    flex: 1 1 0;
+    min-height: 70px;
+    height: auto;
+    overflow: hidden;
+    float: none;
+    background: #1d1d1d;
+}
+#content > #canvas img {
+    height: 100%;
+    object-fit: cover;
+}
+#content > .content.op {
+    flex: none;
+    float: none;
+    margin-top: 40px;
+    margin-bottom: 45px;
+}
+
+/* Defibrillator: put the charge number inside the green display of
+   charge.png. The image is 100vw wide (647x478) and sits 100px above the
+   bottom, the display spans 35%..48% of its height from the bottom. */
+#choc .power-charge #charge {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    top: auto;
+    bottom: calc(100px + 25.8vw) !important;
+    height: 9.5vw;
+    line-height: 9.5vw;
+    font-size: 8.5vw;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Incoming call: "answer" button under the ringing phone */
+#phone .phone-answer {
+    width: 80%;
+    margin: 4px auto 0;
+    font-size: 24px;
+}
+
+/* Event cards: "Accomplished" button under the hang-up icon */
+.contenair .callof {
+    left: 10%;
+    right: 10%;
+    margin-left: 0;
+    text-align: center;
+}
+.contenair .callof img {
+    display: inline-block;
+}
+.contenair .callof .event-done {
+    margin: 4px 0 0;
+    font-size: 22px;
+}
+
+/* ---------- Victory / defeat ---------- */
+
+/* Fill the screen below the header so the dark background reaches the footer */
+.victory, .defeat {
+    min-height: calc(100vh - 57px);
+    min-height: calc(100dvh - 57px);
+    box-sizing: border-box;
+    padding-bottom: 60px;
+}
+
+.summary-stats {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 12px;
+    margin: 6px 0 0;
+    padding-top: 10px;
+    border-top: 3px solid #aaaaa9;
+    font-size: clamp(15px, 4.4vw, 24px);
+    line-height: 1.25;
+}
+.summary-stats dt {
+    margin: 0;
+    color: #666;
+}
+.summary-stats dd {
+    margin: 0;
+    text-align: right;
+    font-weight: bold;
+    color: #000;
+}

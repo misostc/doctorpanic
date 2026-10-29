@@ -81,8 +81,8 @@ body.splash-body{ margin: 0; padding: 0; background: #a1c8ce;}
 .picture-character img{ height: 200px; position:absolute; left: 50%; top: 0; margin-left: -100px;}
 .picture-character.left{ float: left; height: 243px; width: 60%;}
 .picture-character.left img{ height: 243px; margin-left: -122px;}
-.facebookshare .picture-character.left{ width: 40%; height: 150px; margin-bottom: 10px;}
-.facebookshare .picture-character.left img{ height: 150px; margin-left: -75px;}
+.game-summary .picture-character.left{ width: 40%; height: 150px; margin-bottom: 10px;}
+.game-summary .picture-character.left img{ height: 150px; margin-left: -75px;}
 
 /* Patient list */
 .content-img{ background: #fff; margin: 5%; width: 80%; padding: 5%; display:block;}
@@ -117,9 +117,9 @@ canvas .heart{ position:absolute; left: 10px; top: 10px; border: 1px solid red; 
 /* Victory */
 .victory, .defeat{ background: #07191f url(../images/victory.jpg) no-repeat center top; background-size: 100% auto; height: 100%; float: left; width: 100%; padding-top: 150px;}
 .defeat{ background: #103957 url(../images/defeat.jpg) no-repeat center top; background-size: 100% auto;}
-.facebookshare{ width: 80%; margin: 0 5%; padding: 5%; background: #fff; float: left; margin-bottom: 10px;}
-.facebookshare .info{ float: right; width: 50%;}
-.facebookshare .info p{ color: #666;}
+.game-summary{ width: 80%; margin: 0 5%; padding: 5%; background: #fff; float: left; margin-bottom: 10px;}
+.game-summary .info{ float: right; width: 50%;}
+.game-summary .info p{ color: #666;}
 .center{ margin: 0 5%; width: 88%; margin-bottom: 40px;}
 
 /* Phone */

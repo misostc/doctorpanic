@@ -1,10 +1,12 @@
 {
   "name": "Doctor Panic",
   "short_name": "DoctorPanic",
-  "start_url": "./index.html",
+  "start_url": "./pages/homepage.html",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#1976d2",
+  "orientation": "portrait",
+  "background_color": "#d7dacc",
+  "theme_color": "#70b798",
   "description": "Doctor Panic Game Web App",
   "icons": [
     {

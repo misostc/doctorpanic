@@ -1,7 +1,11 @@
 {
     "languageSpecifications": [
         {
-         
+            "summary_level": "Difficulté",
+            "summary_time": "Temps de jeu",
+            "summary_heart": "Arrêts cardiaques gérés",
+            "summary_calls": "Appels décrochés",
+            "summary_date": "Joué le"
         }
     ]
 }
