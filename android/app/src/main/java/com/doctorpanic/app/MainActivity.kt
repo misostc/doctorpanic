@@ -6,9 +6,16 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.net.Uri
+import android.app.AlertDialog
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.view.WindowManager
 import android.webkit.JavascriptInterface
+import android.webkit.RenderProcessGoneDetail
+import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebView
@@ -45,10 +52,12 @@ class MainActivity : ComponentActivity() {
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        CrashLog.install(this)
 
         val root = FrameLayout(this)
         root.setBackgroundColor(ContextCompat.getColor(this, R.color.theme_green))
         webView = WebView(this)
+        webView.overScrollMode = View.OVER_SCROLL_NEVER
         root.addView(webView)
         setContentView(root)
 
@@ -87,6 +96,8 @@ class MainActivity : ComponentActivity() {
             textZoom = 100
         }
         webView.addJavascriptInterface(Bridge(), "DPNative")
+        // Needed for alert() (the debug toggle uses it)
+        webView.webChromeClient = WebChromeClient()
         webView.webViewClient = object : WebViewClient() {
             override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest): WebResourceResponse? {
                 // Pages still include cordova.js from the old Cordova build; serve it empty
@@ -99,6 +110,16 @@ class MainActivity : ComponentActivity() {
             override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
                 if (request.url.host == HOST) return false
                 startActivity(Intent(Intent.ACTION_VIEW, request.url))
+                return true
+            }
+
+            // Without this a crashed or killed renderer (e.g. out of memory)
+            // takes the whole app down; start over with a fresh WebView instead
+            override fun onRenderProcessGone(view: WebView, detail: RenderProcessGoneDetail): Boolean {
+                val reason = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && detail.didCrash()) "crashed" else "was killed"
+                CrashLog.write(this@MainActivity, "WebView renderer $reason on ${view.url}")
+                finish()
+                startActivity(Intent(this@MainActivity, MainActivity::class.java))
                 return true
             }
 
@@ -118,9 +139,25 @@ class MainActivity : ComponentActivity() {
             webView.restoreState(savedInstanceState)
         }
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+        val crash = CrashLog.take(this)
+        if (crash != null) {
+            showCrash(crash)
+        } else if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
             micPermission.launch(Manifest.permission.RECORD_AUDIO)
         }
+    }
+
+    /** Shows what went wrong last time, so it can be reported without adb. */
+    private fun showCrash(report: String) {
+        AlertDialog.Builder(this)
+            .setTitle("Doctor Panic crashed last time")
+            .setMessage(report)
+            .setPositiveButton("Copy") { _, _ ->
+                val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+                clipboard.setPrimaryClip(ClipData.newPlainText("Doctor Panic crash", report))
+            }
+            .setNegativeButton("Close", null)
+            .show()
     }
 
     private fun goBack() {

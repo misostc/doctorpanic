@@ -11,6 +11,11 @@
     margin-right: 48px;
 }
 
+/* No pull-to-refresh: it restarts an operation in progress */
+html, body {
+    overscroll-behavior-y: none;
+}
+
 /* ---------- Homepage ---------- */
 
 /* Keep the last language button clear of the footer */

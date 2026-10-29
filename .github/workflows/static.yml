@@ -42,13 +42,24 @@ jobs:
           gradle-version: '8.14.3'
       # The Android SDK is preinstalled on ubuntu-latest. The APK is
       # published next to the site; the homepage links to it.
+      # Signed release build when the keystore secrets are set, else debug
       - name: Build Android APK
         working-directory: android
-        run: gradle --no-daemon testDebugUnitTest assembleDebug
-      - name: Add APK to site
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
         run: |
-          mv android/app/build/outputs/apk/debug/app-debug.apk doctorpanic.apk
-          rm -rf android/app/build android/.gradle
+          if [ -n "$KEYSTORE_BASE64" ]; then
+            echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/release.jks"
+            export ANDROID_KEYSTORE_FILE="$RUNNER_TEMP/release.jks"
+            gradle --no-daemon testReleaseUnitTest assembleRelease
+            cp app/build/outputs/apk/release/app-release.apk ../doctorpanic.apk
+          else
+            gradle --no-daemon testDebugUnitTest assembleDebug
+            cp app/build/outputs/apk/debug/app-debug.apk ../doctorpanic.apk
+          fi
+      - name: Remove Android build output from site
+        run: rm -rf android/app/build android/.gradle "$RUNNER_TEMP/release.jks"
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

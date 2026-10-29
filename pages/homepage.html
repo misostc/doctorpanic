@@ -53,6 +53,40 @@
                     <a href="#" id="frenchSelector" class="btn warmgrey" onclick="localStorage.setItem('language', 'fr'); location.reload();"><span>Fran&ccedil;ais</span></a>
                     <a href="#" id="germanSelector" class="btn warmgrey" onclick="localStorage.setItem('language', 'de'); location.reload();"><span>Deutsch</span></a>
 
+                    <!-- Android app only: slap the table to deliver the shock -->
+                    <span class="separation slap-toggle"></span>
+                    <a href="#" id="slapToggle" class="btn warmgrey slap-toggle">
+                        <span class="languagespecificHTML slap-on" data-text="slap_on">Choc par claque&nbsp;: oui</span>
+                        <span class="languagespecificHTML slap-off" data-text="slap_off">Choc par claque&nbsp;: non</span></a>
+                    <script>
+                        (function () {
+                            var $toggle = $("#slapToggle");
+                            var render = function () {
+                                var off = false;
+                                try {
+                                    off = localStorage.getItem("dp-slap") === "off";
+                                } catch (e) {
+                                }
+                                $toggle.find(".slap-on").toggle(!off);
+                                $toggle.find(".slap-off").toggle(off);
+                            };
+                            if (!window.DPNative) {
+                                $(".slap-toggle").hide();
+                                return;
+                            }
+                            render();
+                            $toggle.on("click", function (e) {
+                                e.preventDefault();
+                                try {
+                                    var off = localStorage.getItem("dp-slap") === "off";
+                                    localStorage.setItem("dp-slap", off ? "on" : "off");
+                                } catch (e) {
+                                }
+                                render();
+                            });
+                        })();
+                    </script>
+
                     <!-- Built by the Pages workflow; hidden inside the app itself and on iOS -->
                     <span class="separation android-app"></span>
                     <a href="../doctorpanic.apk" id="androidApp" class="btn blue android-app" data-ajax="false" rel="external" download>
@@ -101,5 +135,6 @@
                 });
             });
         </script>
+        <script src="../js/debug.js" type="text/javascript"></script>
     </body>
 </html>

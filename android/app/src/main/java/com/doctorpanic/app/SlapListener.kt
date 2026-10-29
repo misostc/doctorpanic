@@ -57,7 +57,15 @@ class SlapListener(
         running = true
         fusion = SlapFusion(accelerometer != null)
         joltDetector = JoltDetector()
-        accelerometer?.let { sensors.registerListener(accelListener, it, SensorManager.SENSOR_DELAY_FASTEST) }
+        accelerometer?.let {
+            try {
+                // 200 Hz is the most Android 12+ allows without HIGH_SAMPLING_RATE_SENSORS
+                sensors.registerListener(accelListener, it, ACCEL_PERIOD_US)
+            } catch (e: Exception) {
+                Log.w(TAG, "Cannot use accelerometer", e)
+                fusion = SlapFusion(hasAccelerometer = false)
+            }
+        }
         thread = Thread(::record, "slap-listener").apply { start() }
     }
 
@@ -118,6 +126,10 @@ class SlapListener(
                     main.post { if (running) onLevel(level, joltedNow) }
                 }
             }
+        } catch (e: Exception) {
+            // An uncaught exception here would kill the app; tapping still works
+            Log.w(TAG, "Microphone failed", e)
+            running = false
         } finally {
             try {
                 recorder.stop()
@@ -139,5 +151,6 @@ class SlapListener(
         private const val TAG = "SlapListener"
         const val SAMPLE_RATE = 44100
         private const val LEVEL_INTERVAL_MS = 50L
+        private const val ACCEL_PERIOD_US = 5000
     }
 }

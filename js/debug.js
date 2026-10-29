@@ -2,12 +2,11 @@
  * Debug helper: lets you open the screens that normally appear at random
  * during a game (heart attack, phone call, events, ...).
  *
- * Not loaded by default. To use it, add before </body> of the operation
- * pages (and homepage.html to toggle it there):
- *   <script src="../js/debug.js" type="text/javascript"></script>
+ * Loaded on the homepage and the operation pages, but hidden unless enabled.
  *
- * Enable:  add ?debug=1 to any page URL (remembered in localStorage)
- * Disable: add ?debug=0
+ * Enable/disable: tap the Doctor Panic logo on the homepage 7 times (works
+ * in the Android app too), or add ?debug=1 / ?debug=0 to any page URL.
+ * The setting is remembered in localStorage.
  *
  * On operation pages a bug button opens a panel listing every screen.
  * From the console: dpDebug.show("event-airco"), dpDebug.show("choc"), ...
@@ -26,6 +25,28 @@
         enabled = window.localStorage.getItem("dp-debug") === "1";
     } catch (e) {
     }
+
+    // Hidden switch: 7 quick taps on the homepage logo
+    $(function () {
+        var taps = 0, timer;
+        $("#homepage .intro img").on("click", function () {
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                taps = 0;
+            }, 1500);
+            if (++taps < 7) {
+                return;
+            }
+            taps = 0;
+            try {
+                window.localStorage.setItem("dp-debug", enabled ? "0" : "1");
+            } catch (e) {
+            }
+            alert(enabled ? "Debug off" : "Debug on: open an operation and use the bug button");
+            window.location.reload();
+        });
+    });
+
     if (!enabled) {
         return;
     }
@@ -66,10 +87,17 @@
                 return;
             }
 
-            if (name === "choc" && window.gameplay) {
-                $("#choc span#charge").text(gameplay.getCharge());
-                $("#canvas img#pulse").hide();
-                $("#canvas img#no-pulse").show();
+            // A real cardiac arrest / phone call, so the alarm or ringtone
+            // (and in the app, slap listening) start as in a game
+            if ((name === "choc" || name === "phone") && window.gameplay) {
+                haInProgerss = false;
+                pcInProgerss = false;
+                if (name === "choc") {
+                    gameplay.heartAttack();
+                } else {
+                    gameplay.phoneCall();
+                }
+                return;
             }
 
             $popup.popup({positionTo: "window"});
@@ -90,11 +118,12 @@
 
     $(function () {
         var $panel = $("<div id='dp-debug-panel' />").hide();
-        var $toggle = $("<button type='button' id='dp-debug-toggle' data-role='none'>&#128027;</button>");
+        // Plain spans: jQuery Mobile enhances <button>s and duplicates them
+        var $toggle = $("<span role='button' id='dp-debug-toggle'>&#128027;</span>");
 
         if (isOperation) {
             var addButton = function (label, fn) {
-                $("<button type='button' data-role='none' />").text(label).on("click", function (e) {
+                $("<span role='button' class='dp-btn' />").text(label).on("click", function (e) {
                     e.stopPropagation();
                     $panel.hide();
                     fn();
@@ -113,7 +142,7 @@
                 dpDebug.go("defeat");
             });
         }
-        $("<button type='button' data-role='none' />").text("disable debug").on("click", function () {
+        $("<span role='button' class='dp-btn' />").text("disable debug").on("click", function () {
             window.localStorage.setItem("dp-debug", "0");
             window.location.reload();
         }).appendTo($panel);
@@ -125,10 +154,10 @@
 
         $("<style>" +
                 "#dp-debug-toggle{position:fixed;left:8px;bottom:calc(8px + env(safe-area-inset-bottom));z-index:99999;" +
-                "width:40px;height:40px;border-radius:20px;border:2px solid #000;background:#ffcc33;font-size:20px;line-height:1;padding:0}" +
+                "width:40px;height:40px;border-radius:20px;border:2px solid #000;background:#ffcc33;font-size:20px;line-height:36px;text-align:center;box-sizing:border-box}" +
                 "#dp-debug-panel{position:fixed;left:8px;right:8px;bottom:calc(56px + env(safe-area-inset-bottom));max-height:60vh;overflow:auto;" +
                 "z-index:99999;background:rgba(0,0,0,.85);padding:6px;border-radius:6px;display:flex;flex-wrap:wrap;gap:4px}" +
-                "#dp-debug-panel button{font:12px/1.2 monospace;padding:6px 8px;border:0;border-radius:3px;background:#eee;color:#000}" +
+                "#dp-debug-panel .dp-btn{font:12px/1.2 monospace;padding:6px 8px;border-radius:3px;background:#eee;color:#000;cursor:pointer}" +
                 "</style>").appendTo("head");
         $("body").append($toggle, $panel);
     });

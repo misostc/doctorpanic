@@ -34,12 +34,29 @@ var gameplay = gameplay || {
         $("#clock").text(minutes.toString() + ":" + secondsString);
 
         $(".power-charge a.btn").click(gameplay.hover_fix);
+        gameplay.keepScreenOn();
+    },
+    // Browser/PWA only (the Android app does this natively). The lock is
+    // dropped whenever the page is hidden, so take it again on return
+    keepScreenOn: function () {
+        if (window.DPNative || !navigator.wakeLock) {
+            return;
+        }
+        var request = function () {
+            if (document.visibilityState === "visible") {
+                navigator.wakeLock.request("screen").catch(function () {
+                });
+            }
+        };
+        request();
+        document.addEventListener("visibilitychange", request);
     },
     recover: function () {
         gameplay.listenForSlap(false);
         if (gameEnded) {
             return;
         }
+        gameplay.playShock();
 
         console.log("recover");
 
@@ -309,6 +326,9 @@ var gameplay = gameplay || {
         gameplay.startLapAudio();
     },
     startGame: function () {
+        // Runs on the "tap to start" tap: browsers only allow audio
+        // contexts created or resumed during a user gesture
+        gameplay.audioContext();
 //        createjs.Sound.stop();
         AudioHelper.stopAll();
 
@@ -482,11 +502,71 @@ var gameplay = gameplay || {
             window.location.href = "victory.html?level=" + d_level + "&page=victory&id=" + patientId;
         }
     },
+    audioContext: function () {
+        var Context = window.AudioContext || window.webkitAudioContext;
+        if (!Context) {
+            return null;
+        }
+        if (!gameplay.audio) {
+            gameplay.audio = new Context();
+        }
+        if (gameplay.audio.state === "suspended") {
+            gameplay.audio.resume();
+        }
+        return gameplay.audio;
+    },
+    // Defibrillator zap, synthesized: a noise burst through a falling
+    // band-pass filter over a dropping low hum
+    playShock: function () {
+        var ctx = gameplay.audioContext();
+        if (!ctx) {
+            return;
+        }
+        var now = ctx.currentTime, duration = 0.5;
+
+        var buffer = ctx.createBuffer(1, Math.floor(ctx.sampleRate * duration), ctx.sampleRate);
+        var samples = buffer.getChannelData(0);
+        for (var i = 0; i < samples.length; i++) {
+            samples[i] = Math.random() * 2 - 1;
+        }
+        var noise = ctx.createBufferSource();
+        noise.buffer = buffer;
+        var filter = ctx.createBiquadFilter();
+        filter.type = "bandpass";
+        filter.Q.value = 1.5;
+        filter.frequency.setValueAtTime(4000, now);
+        filter.frequency.exponentialRampToValueAtTime(150, now + duration);
+
+        var hum = ctx.createOscillator();
+        hum.type = "sawtooth";
+        hum.frequency.setValueAtTime(140, now);
+        hum.frequency.exponentialRampToValueAtTime(35, now + duration);
+
+        var gain = ctx.createGain();
+        gain.gain.setValueAtTime(0.0001, now);
+        gain.gain.exponentialRampToValueAtTime(0.8, now + 0.01);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+        noise.connect(filter);
+        filter.connect(gain);
+        hum.connect(gain);
+        gain.connect(ctx.destination);
+        noise.start(now);
+        hum.start(now);
+        noise.stop(now + duration);
+        hum.stop(now + duration);
+    },
     // Android app only: the native shell listens on the microphone while the
     // defibrillator screen is open and calls onSlap() on a loud slap
     listenForSlap: function (listen) {
         if (window.DPNative) {
-            if (listen) {
+            var enabled = true;
+            try {
+                // Homepage toggle
+                enabled = window.localStorage.getItem("dp-slap") !== "off";
+            } catch (e) {
+            }
+            if (listen && enabled) {
                 DPNative.startSlap();
             } else {
                 DPNative.stopSlap();
