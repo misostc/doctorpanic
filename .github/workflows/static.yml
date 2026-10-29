@@ -31,6 +31,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.14.3'
+      # The Android SDK is preinstalled on ubuntu-latest. The APK is
+      # published next to the site; the homepage links to it.
+      - name: Build Android APK
+        working-directory: android
+        run: gradle --no-daemon testDebugUnitTest assembleDebug
+      - name: Add APK to site
+        run: |
+          mv android/app/build/outputs/apk/debug/app-debug.apk doctorpanic.apk
+          rm -rf android/app/build android/.gradle
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

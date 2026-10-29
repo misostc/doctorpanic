@@ -36,6 +36,7 @@ var gameplay = gameplay || {
         $(".power-charge a.btn").click(gameplay.hover_fix);
     },
     recover: function () {
+        gameplay.listenForSlap(false);
         if (gameEnded) {
             return;
         }
@@ -117,6 +118,7 @@ var gameplay = gameplay || {
         var charge = gameplay.getCharge();
         $("#choc span#charge").text(charge);
         $("#choc").popup("open");
+        gameplay.listenForSlap(true);
 
         AudioHelper.stopAll();
 
@@ -443,6 +445,7 @@ var gameplay = gameplay || {
         $("#canvas img#no-pulse").hide();
 
         gameEnded = true;
+        gameplay.listenForSlap(false);
 
         var id = window.setTimeout(function () {
         }, 0);
@@ -477,6 +480,50 @@ var gameplay = gameplay || {
 //                transition: "slideup"
 //            });
             window.location.href = "victory.html?level=" + d_level + "&page=victory&id=" + patientId;
+        }
+    },
+    // Android app only: the native shell listens on the microphone while the
+    // defibrillator screen is open and calls onSlap() on a loud slap
+    listenForSlap: function (listen) {
+        if (window.DPNative) {
+            if (listen) {
+                DPNative.startSlap();
+            } else {
+                DPNative.stopSlap();
+                $("#slap-meter").hide();
+            }
+        }
+    },
+    // level and threshold are peaks as a fraction of full scale; shown on a
+    // -60..0 dB scale with a mark where a slap is loud enough. jolted: the
+    // accelerometer felt the table being hit
+    onMicLevel: function (level, threshold, jolted) {
+        var toScale = function (peak) {
+            var db = 20 * Math.log(Math.max(peak, 0.001)) / Math.LN10;
+            return Math.min(100, Math.max(0, (db + 60) / 60 * 100));
+        };
+        var $meter = $("#slap-meter");
+        if (!$meter.length) {
+            $meter = $("<div id='slap-meter'><div class='slap-level'></div><div class='slap-threshold'></div></div>").appendTo("body");
+        }
+        if (!haInProgerss || gameEnded) {
+            $meter.hide();
+            return;
+        }
+        $meter.show();
+        $meter.find(".slap-level").css("width", toScale(level) + "%").toggleClass("loud", level >= threshold);
+        $meter.find(".slap-threshold").css("left", toScale(threshold) + "%");
+        if (jolted) {
+            $meter.addClass("jolt");
+            clearTimeout(gameplay.joltTimer);
+            gameplay.joltTimer = setTimeout(function () {
+                $meter.removeClass("jolt");
+            }, 250);
+        }
+    },
+    onSlap: function () {
+        if (haInProgerss && !gameEnded) {
+            $("#choc").popup("close");
         }
     },
     saveSummary: function (won) {

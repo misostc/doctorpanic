@@ -122,3 +122,39 @@
     font-weight: bold;
     color: #000;
 }
+
+/* ---------- Android app: microphone level while listening for a slap ---------- */
+
+#slap-meter {
+    display: none;
+    position: fixed;
+    top: 72px;
+    left: 10%;
+    right: 10%;
+    height: 16px;
+    z-index: 1200;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, .6);
+    overflow: hidden;
+}
+#slap-meter .slap-level {
+    height: 100%;
+    width: 0;
+    background: #70b798;
+    transition: width 50ms linear;
+}
+#slap-meter .slap-level.loud {
+    background: #e2342b;
+}
+#slap-meter .slap-threshold {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #fff;
+}
+#slap-meter.jolt {
+    border-color: #ffcc33;
+    box-shadow: 0 0 10px #ffcc33;
+}

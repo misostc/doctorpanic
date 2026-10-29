@@ -52,6 +52,16 @@
                         <span>English</span></a>
                     <a href="#" id="frenchSelector" class="btn warmgrey" onclick="localStorage.setItem('language', 'fr'); location.reload();"><span>Fran&ccedil;ais</span></a>
                     <a href="#" id="germanSelector" class="btn warmgrey" onclick="localStorage.setItem('language', 'de'); location.reload();"><span>Deutsch</span></a>
+
+                    <!-- Built by the Pages workflow; hidden inside the app itself and on iOS -->
+                    <span class="separation android-app"></span>
+                    <a href="../doctorpanic.apk" id="androidApp" class="btn blue android-app" data-ajax="false" rel="external" download>
+                        <span class="languagespecificHTML" data-text="android_app">Application Android</span></a>
+                    <script>
+                        if (window.DPNative || /iPhone|iPad|iPod/.test(navigator.userAgent)) {
+                            $(".android-app").hide();
+                        }
+                    </script>
                 </div><!-- End of language-selector -->
 
             </article><!-- End of article -->
