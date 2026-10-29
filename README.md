@@ -10,6 +10,26 @@ world.
 > Éric Azagury, © Sombreros Production / Repos Production. See
 > [Credits](#credits).
 
+## About this version
+
+This project starts from the original Doctor Panic Android app. That app was
+buggy: it got stuck in French whatever language you picked, and it had broken
+screens and layouts that didn't fit modern phones. This version fixes it up and
+adds some extras:
+
+- **Translations that work:** English, Czech and German, checked against the
+  French originals, with mistranslations and leftovers from the printed cards
+  fixed.
+- **Layout fixes for today's phones:** the operation screen fits one screen,
+  the defibrillator charge is readable, and buttons no longer hide under the
+  footer.
+- **Bug fixes:** an event that never showed up, a stray debug popup mid-game,
+  and missing fonts offline.
+- **Result screen** with a summary of the game, replacing the old Facebook
+  share.
+- **New:** slap the table to shock, the screen stays on during an operation,
+  and a playable web version you can install from the browser.
+
 ## Play
 
 | | |
